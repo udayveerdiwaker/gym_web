@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Oswald, sans-serif;
+    color: #ffffff;
+}
+
+:root {
+    --bg-red: #e31c25;
+    --text-red: #e31c25;
+    --hover-red: #e31c25;
+    --text-gray: #343a40;
+    --bg-black: #111;
+    --text-black: #000;
+    --text-white: #fff;
+    --hover-white: #fff;
+    --bg-white: #fff;
+}
+
+.text_red {
+    color: var(--text-red);
+}
+
+.text_black {
+    color: var(--text-black);
+}
+
+.text_white {
+    color: var(--text-white);
+}
+
+.navbar a {
+    color: var(--text-white);
+    font-size: 20px;
+    height: 5vh;
+    text-shadow: 2px 2px 10px var(--bg-black);
+
+}
+
+.navbar a:hover {
+    color: var(--hover-red);
+    /* text-shadow: 2px 2px 10px var(--hover-white); */
+}
+
+section {
+    height: auto;
+    padding: 40px 40px;
+}
+
+.section_same {
+    background: url('foad.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.home {
+    height: 100vh;
+}
+
+
+.home h1 {
+    font-size: 4rem;
+    text-shadow: 2px 2px 10px var(--text-black);
+}
+
+.home p {
+    color: #f4040b;
+    /* text-shadow: 1px 1px 3px #ffffff; */
+}
+
+.section {
+    background: url('foad.jpg') no-repeat center center/cover;
+
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    line-height: 1;
+    border: 2px solid #ffffff;
+
+}
+
+.g-4,
+.gy-4 {
+    --bs-gutter-y: 0.5rem;
+}
+
+.contact .php-email-form input[type=text],
+.php-email-form input[type=email],
+.php-email-form input[type=tel],
+.php-email-form select[class=form-select],
+.php-email-form textarea {
+    font-size: 14px;
+    padding: 10px 15px;
+    box-shadow: none;
+    border-radius: 0;
+    color: #fff;
+    background-color: var(--surface-color);
+}
+
+.col-lg-5>.info-wrap {
+    margin-top: 35px;
+    height: 50%;
+}
+
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.footer {
+    padding: 60px 10px;
+}
+
+.footer .mb-4 .list-unstyled .me-5 .nav-item .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer .mb-4 .list-unstyled .me-5 .nav-item .nav-link:hover {
+    color: #f4040b;
+}
+
+.footer .btn-learn-more {
+    border-radius: 30px;
+    color: #fff;
+    padding: 8px 30px;
+    border: 2px solid #f4040b;
+    transition: 0.3s all ease-in-out;
+    font-size: 14px;
+}
+
+.footer .btn-learn-more:hover {
+    background: #f4040b;
+
+}
+
+.footer h5 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.footer .list-unstyled li {
+    margin-bottom: 10px;
+}
+
+.footer .social-icons li {
+    display: inline-block;
+}
+
+.footer .social-icons li a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid #f4040b;
+}
+
+.footer .social-icons li a:hover {
+    font-size: 20px;
+    color: #fff;
+    background: #f4040b;
+}
+
+.footer .widget ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.footer .social-icons li a span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s all ease-in-out;
+}
+
+.hbtn {
+    border-radius: 0;
+    border: 2px solid #f4040b;
+}
+
+.hbtn:hover {
+    background-color: #f4040b;
+    color: #fff;
+
+}
