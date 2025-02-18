@@ -12,7 +12,7 @@ body {
 
 :root {
     --bg-red: #e31c25;
-    /* --text-red: #e31c25; */
+    --text-red: #e31c25;
     --hover-red: #e31c25;
     --hover-Red: #c00912;
     --btn-color: #ff4d4d;
