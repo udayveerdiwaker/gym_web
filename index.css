@@ -495,7 +495,7 @@ h4.display-4 {
 
 /* Gym Membership Form Styles */
 .section.Contact {
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
         url('gym.jpg') center/cover fixed;
     color: #ffffff;
 }
@@ -509,8 +509,8 @@ h4.display-4 {
     margin: 0 auto;
 }
 
-.form-container h2 {
-    color: #ff4d4d;
+.form-container h3 {
+    color: var(--text-gray);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 2rem;
@@ -639,84 +639,184 @@ h4.display-4 {
     height: 50%;
 } */
 /* General Form Styling */
+
+
+
+/* General Styles */
 .contact {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
-        url('gym.jpg') center/cover fixed;
-    /* background-color: #f7f7f7; */
-    padding: 50px 20px;
-    font-family: Arial, sans-serif;
+    padding: 60px 0;
+    /* background-color: #f8f9fa; */
+
 }
 
-.cont {
-    background: rgba(255, 255, 255, 0.70);
-    width: 100%;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    /* max-width: 600px; */
-    margin: 0 auto;
+.text_red {
+    color: #ff4757;
+    /* Vibrant red for gym theme */
 }
 
+.text_gray {
+    color: #2f3542;
+    /* Dark gray for contrast */
+}
 
-.contact input,
-.contact textarea {
-    border: 2px solid  var(--border-color);
-    border-radius: 5px;
-    padding: 10px;
-    width: 100%;
+.font_weight {
+    font-weight: 700;
+    /* Bold text */
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 2px solid #ced4da;
+    padding: 12px;
     font-size: 16px;
-    margin-bottom: 15px;
+    transition: all 0.3s ease;
 }
 
-.contact input:focus,
-.contact textarea:focus {
-    outline: none;
-    box-shadow: none;
-    border-color: #ff4d4d;
+.form-control:focus {
+    border-color: #ff4757;
+    /* Vibrant red on focus */
+    box-shadow: 0 0 8px rgba(255, 71, 87, 0.5);
 }
 
-.contact button {
-    background-color: #ff4d4d;
-    color: white;
-    font-weight: bold;
-    padding: 12px 20px;
+.btn-primary {
+    background-color: #ff4757;
+    /* Vibrant red */
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 12px 40px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-.contact button:hover {
-    background-color: #e63939;
+.btn-primary:hover {
+    background-color: #ff6b81;
+    /* Lighter red on hover */
+    transform: translateY(-2px);
 }
 
-.contact .invalid-feedback,
-.valid-feedback {
-    font-size: 14px;
-    color: red;
-    display: none;
-}
-
-input.is-invalid,
-textarea.is-invalid {
-    border-color: red;
-}
-
-input.is-valid,
-textarea.is-valid {
-    border-color: green;
-}
-
-textarea {
+.textarea {
     resize: none;
-    height: 150px;
 }
 
-/* Responsive Styling */
+.info-wrap iframe {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .contact {
+        padding: 40px 0;
+    }
+
+    .display-6 {
+        font-size: 2rem;
+        /* Adjust heading size for smaller screens */
+    }
+
+    .form-control {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        padding: 10px 30px;
+        font-size: 16px;
+    }
+
+    .info-wrap iframe {
+        height: 300px;
+        /* Adjust map height for smaller screens */
+    }
+}
+
 @media (max-width: 768px) {
     .contact {
-        padding: 30px 15px;
+        padding: 30px 0;
     }
+
+    .display-6 {
+        font-size: 1.75rem;
+        /* Further adjust heading size */
+    }
+
+    .form-control {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        padding: 8px 25px;
+        font-size: 14px;
+    }
+
+    .info-wrap iframe {
+        height: 250px;
+        /* Further adjust map height */
+    }
+}
+
+@media (max-width: 576px) {
+    .contact {
+        padding: 20px 0;
+    }
+
+    .display-6 {
+        font-size: 1.5rem;
+        /* Adjust heading size for mobile */
+    }
+
+    .form-control {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .btn-primary {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+
+    .info-wrap iframe {
+        height: 200px;
+        /* Adjust map height for mobile */
+    }
+}
+
+/* Gym-Themed Enhancements */
+.contact {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    /* Subtle gradient */
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2f3542;
+    /* Dark gray for labels */
+}
+
+.valid-feedback {
+    color: #2ed573;
+    /* Green for valid feedback */
+}
+
+.invalid-feedback {
+    color: #ff4757;
+    /* Red for invalid feedback */
+}
+
+.php-email-form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.info-wrap {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -725,6 +825,7 @@ div {
     unicode-bidi: isolate;
 }
 
+/* 
 .footer {
     padding: 60px 30px;
 }
@@ -792,7 +893,174 @@ div {
     left: 50%;
     transform: translate(-50%, -50%);
     transition: 0.3s all ease-in-out;
+} */
+
+
+/* General Footer Styles */
+.footer {
+    background-color: #1a1a1a;
+    /* Dark background for gym theme */
+    color: #ffffff;
+    padding: 60px 0 20px 0;
 }
+
+.footer h5 {
+    color: #ff4757;
+    /* Vibrant red for headings */
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    /* Uppercase headings for gym vibe */
+}
+
+.footer p {
+    color: #b0b0b0;
+    /* Light gray for text */
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #ff4757;
+    /* Vibrant red on hover */
+}
+
+.footer .nav-link {
+    padding: 5px 0;
+    color: #b0b0b0;
+}
+
+.footer .nav-link:hover {
+    color: #ff4757;
+    /* Vibrant red on hover */
+}
+
+.footer .social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer .social-icons a {
+    font-size: 20px;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #ff4757;
+    /* Vibrant red on hover */
+}
+
+.footer .form-control {
+    background-color: #2a2a2a;
+    /* Dark input background */
+    border: 2px solid #ff4757;
+    /* Vibrant red border */
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.footer .form-control:focus {
+    box-shadow: 0 0 8px rgba(255, 71, 87, 0.5);
+    /* Vibrant red shadow on focus */
+}
+
+.footer .btn-outline-danger {
+    border-color: #ff4757;
+    /* Vibrant red border */
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.footer .btn-outline-danger:hover {
+    background-color: #ff4757;
+    /* Vibrant red background on hover */
+    color: #ffffff;
+}
+
+.footer .alert {
+    margin-top: 15px;
+}
+
+.footer .text-center {
+    border-top: 1px solid #333333;
+    padding-top: 20px;
+    margin-top: 40px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .footer {
+        padding: 40px 0 20px 0;
+    }
+
+    .footer h5 {
+        font-size: 18px;
+    }
+
+    .footer p {
+        font-size: 13px;
+    }
+
+    .footer .form-control {
+        font-size: 14px;
+    }
+
+    .footer .btn-outline-danger {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 30px 0 20px 0;
+    }
+
+    .footer h5 {
+        font-size: 16px;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
+
+    .footer .form-control {
+        font-size: 12px;
+    }
+
+    .footer .btn-outline-danger {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 20px 0 10px 0;
+    }
+
+    .footer h5 {
+        font-size: 14px;
+    }
+
+    .footer p {
+        font-size: 11px;
+    }
+
+    .footer .form-control {
+        font-size: 11px;
+    }
+
+    .footer .btn-outline-danger {
+        font-size: 11px;
+    }
+}
+
 
 .hbtn {
     border-radius: 0;

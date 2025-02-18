@@ -51,7 +51,7 @@ include 'header.php';
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="form-container">
-                    <h2 class="fs-1 fw-bold">Sign Up for Membership</h2>
+                    <h3 class="fw-bold">Sign Up for Membership</h3>
                     <form action="process_signup.php" method="POST">
                         <div class="form-group">
                             <label for="name">Full Name:</label>
