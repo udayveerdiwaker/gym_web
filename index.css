@@ -6,6 +6,7 @@
 
 body {
     font-family: Oswald, sans-serif;
+
     color: #ffffff;
 }
 
@@ -14,13 +15,14 @@ body {
     --text-red: #e31c25;
     --hover-red: #e31c25;
     --hover-Red: #c00912;
+    --btn-color: #ff4d4d;
     --text-gray: #343a40;
     --bg-black: #111;
     --text-black: #000;
     --text-white: #fff;
     --hover-white: #fff;
     --bg-white: #fff;
-    --border-color: #ced4da;
+    --border-color: #ccc;
 }
 
 .text_red {
@@ -268,7 +270,7 @@ h4.display-4 {
 }
 
 .text_size {
-    font-family: Oswald, sans-serif;
+    /* font-family: Oswald, sans-serif; */
     font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: -1px;
@@ -291,7 +293,7 @@ h4.display-4 {
     padding: 2rem;
     border-radius: 10px;
     position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
 }
 
@@ -300,7 +302,7 @@ h4.display-4 {
 }
 
 .featured {
-    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    background: linear-gradient(135deg, #f83f3f, #f36161);
     color: white;
 }
 
@@ -308,7 +310,7 @@ h4.display-4 {
     position: absolute;
     top: -15px;
     right: -15px;
-    background: #4ecdc4;
+    background: #ed1b1b;
     color: var(--text-white);
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -369,134 +371,240 @@ h4.display-4 {
 
 /* General Styles */
 
-  
-  /* Section Styling */
-  section.contact {
+
+/* Section Styling */
+/* section.Contact {
+
     padding: 60px 0;
-    background-color: #000;
-    color: #fff;
-  }
-  
-  .container {
+    background-color: var(--text-gray);
+    color: var(--text-white);
+}
+
+.container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
-  }
-  
-  .row {
+}
+
+.row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-  }
-  
-  .col-md-8 {
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
-  }
-  
-  /* Form Container */
-  .form-container {
-    background-color: #1a1a1a;
+} */
+
+
+
+/* Form Container */
+/* 
+.form-container {
+    background-color: var(--bg-black);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .form-container h2 {
+}
+
+.form-container h2 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 24px;
-    color: #fff;
-  }
-  
-  /* Form Group Styling */
-  .form-group {
+}
+
+.form-group {
     margin-bottom: 20px;
-  }
-  
-  .form-group label {
+}
+
+.form-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #fff;
-  }
-  
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="password"],
-  .form-group select {
+    color: var(--text-white);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select {
     width: 100%;
     padding: 12px;
-    border: 1px solid #444;
+    border: 1px solid var(--text-gray);
     border-radius: 5px;
     font-size: 16px;
-    background-color: #333;
+    background-color: var(--text-gray);
     color: #fff;
-  }
-  
-  .form-group input[type="text"]:focus,
-  .form-group input[type="email"]:focus,
-  .form-group input[type="password"]:focus,
-  .form-group select:focus {
-    border-color: #28a745;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group select:focus {
+    border-color: var(--hover-Red);
     outline: none;
-  }
-  
-  .form-group select {
+}
+
+.form-group select {
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 12px;
-  }
-  
-  /* Button Styling */
-  .form-group button {
+}
+
+.form-group button {
     width: 100%;
     padding: 12px;
-    background-color: #28a745;
+    background-color: var(--bg-red);
     color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .form-group button:hover {
-    background-color: #218838;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
+}
+
+.form-group button:hover {
+    background-color: var(--hover-Red);
+}
+
+@media (max-width: 768px) {
     .col-md-8 {
-      flex: 0 0 100%;
-      max-width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
     }
-  
+
     .form-container {
-      padding: 20px;
+        padding: 20px;
     }
-  
+
     .form-container h2 {
-      font-size: 20px;
+        font-size: 20px;
     }
-  
+
     .form-group input[type="text"],
     .form-group input[type="email"],
     .form-group input[type="password"],
     .form-group select {
-      font-size: 14px;
-      padding: 10px;
+        font-size: 14px;
+        padding: 10px;
     }
-  
-    .form-group button {
-      font-size: 14px;
-      padding: 10px;
-    }
-  }
 
+    .form-group button {
+        font-size: 14px;
+        padding: 10px;
+    }
+} */
+
+/* Gym Membership Form Styles */
+.section.Contact {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+        url('gym.jpg') center/cover fixed;
+    color: #ffffff;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.50);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-container h2 {
+    color: #ff4d4d;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ff4d4d;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.2);
+}
+
+.form-group button {
+    background: #ff4d4d;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.form-group button:hover {
+    background: #ff3333;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .form-container h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 10px 15px;
+    }
+
+    .form-group button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 1rem;
+    }
+
+    .form-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+}
+
+/* 
 .form-control {
     display: block;
     width: 100%;
@@ -504,6 +612,7 @@ h4.display-4 {
     line-height: 1;
     color: var(--text-gray);
     border: 2px solid var(--border-color);
+    
 
 }
 
@@ -528,7 +637,88 @@ h4.display-4 {
 .col-lg-5>.info-wrap {
     margin-top: 35px;
     height: 50%;
+} */
+/* General Form Styling */
+.contact {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+        url('gym.jpg') center/cover fixed;
+    /* background-color: #f7f7f7; */
+    padding: 50px 20px;
+    font-family: Arial, sans-serif;
 }
+
+.container {
+    background: rgba(255, 255, 255, 0.70);
+    width: 100%;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    /* max-width: 600px; */
+    margin: 0 auto;
+}
+
+
+.contact input,
+.contact textarea {
+    border: 2px solid  var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #ff4d4d;
+}
+
+.contact button {
+    background-color: #ff4d4d;
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+    background-color: #e63939;
+}
+
+.contact .invalid-feedback,
+.valid-feedback {
+    font-size: 14px;
+    color: red;
+    display: none;
+}
+
+input.is-invalid,
+textarea.is-invalid {
+    border-color: red;
+}
+
+input.is-valid,
+textarea.is-valid {
+    border-color: green;
+}
+
+textarea {
+    resize: none;
+    height: 150px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .contact {
+        padding: 30px 15px;
+    }
+}
+
 
 div {
     display: block;

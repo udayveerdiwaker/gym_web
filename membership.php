@@ -76,7 +76,7 @@ include 'header.php';
 </section> -->
 <section class="membership-plans">
     <div class="container">
-        <h2 class="mb-4 fs-1 fw-bold text-center mt-4">Choose Your Perfect Plan</h2>
+        <h2 class="mb-4 fs-1 fw-bold text-center ">Choose Your Perfect Plan</h2>
         <p class="section-subtitle text-center fw-bold">Flexible options for every fitness journey</p>
 
         <di v class="plans-container">
@@ -97,8 +97,8 @@ include 'header.php';
             <div class="plan-card featured">
                 <div class="recommended-badge">Most Popular</div>
                 <h3>Premium Plan</h3>
-                <div class="price">₹4999<span>/month</span></div>
-                <ul class="plan-features">
+                <div class="price">₹4999<span class="text-black">/month</span></div>
+                <ul class="plan-features text-white">
                     <li><i class="fas fa-check"></i> Full gym access</li>
                     <li><i class="fas fa-check"></i> Unlimited group classes</li>
                     <li><i class="fas fa-check"></i> Locker + towel service</li>
@@ -119,7 +119,6 @@ include 'header.php';
                 </ul>
                 <a href="sign_membership.php" class="cta-button">Get Started</a>
             </div>
-    </div>
     </div>
 </section>
 

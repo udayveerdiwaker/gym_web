@@ -46,12 +46,12 @@ include 'header.php';
 ?>
 
 <!-- Membership Plan Form Section -->
-<section class="py-5 section contact">
-    <div class="container">
+<section class="py-5 section Contact">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="form-container">
-                    <h2>Sign Up for Membership</h2>
+                    <h2 class="fs-1 fw-bold">Sign Up for Membership</h2>
                     <form action="process_signup.php" method="POST">
                         <div class="form-group">
                             <label for="name">Full Name:</label>
