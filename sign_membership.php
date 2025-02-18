@@ -46,70 +46,51 @@ include 'header.php';
 ?>
 
 <!-- Membership Plan Form Section -->
-<section class="py-5 bg-black section contact">
+<section class="py-5 section contact">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="form-container">
-                    <h2 class="text-center mb-4 mt-5 fw-bold fs-1">Sign Up for Membership</h2>
-                    <form action="index.php" method="POST" class="php-email-form">
-                        <!-- Name Input -->
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                    <h2>Sign Up for Membership</h2>
+                    <form action="process_signup.php" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
-
-                        <!-- Email Input -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
-
-                        <!-- Phone Input -->
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone" name="phone">
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
                         </div>
-
-                        <!-- Membership Plan Dropdown -->
-                        <div class="mb-3">
-                            <label for="membership" class="form-label">Select Membership Plan</label>
-                            <!-- <select class="form-select" id="membership" name="membership" required>
-                                <option value="" disabled selected>Select Plan</option>
-                                <?php foreach ($plans as $plan): ?>
-                                    <option value="<?= $plan['plan_name']; ?>">
-                                        <?= $plan['plan_name']; ?> - $<?= number_format($plan['price'], 2); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select> -->
-                        </div>
-
-                        <!-- Payment Method -->
-                        <div class="mb-3">
-                            <label for="payment" class="form-label">Payment Method</label>
-                            <select type="select" class="form-select" id="payment" name="payment" required>
+                        <!-- <div class="form-group">
+                            <label for="payment">Payment Method</label>
+                            <select type="select" id="payment" name="payment" required>
                                 <option value="" disabled selected>Select Payment Method</option>
-                                <option value="Credit Card" class="text-black">Credit Card</option>
-                                <option value="PayPal" class="text-black">UPI</option>
-                                <option value="PayPal" class="text-black">GooglePay</option>
+                                <option value="Credit Card">Credit Card</option>
+                                <option value="UPI">UPI</option>
+                                <option value="GooglePay">GooglePay</option>
+                            </select>
+                        </div> -->
+                        <div class="form-group">
+                            <label for="membership">Membership Plan:</label>
+                            <select type="select" id="membership" name="membership" required>
+                                <option value="" disabled selected>Choose Plan</option>
+                                <option value="basic">Basic - ₹2999/month</option>
+                                <option value="premium">Premium - ₹4999/month</option>
+                                <option value="Elite">Elite - ₹7999/month</option>
                             </select>
                         </div>
-
-                        <!-- Terms and Conditions -->
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="terms" required>
-                            <label class="form-check-label" for="terms">
-                                I agree to the <a href="#">terms and conditions</a>.
-                            </label>
-                        </div>
-
-                        <!-- Submit Button -->
-
-                        <div class="input-group-append d-grid text-center">
-                            <button class="btn hbtn text-white" type="submit" name="submit">Sign Up Now</button>
+                        <div class="form-group">
+                            <button type="submit">Sign Up</button>
                         </div>
                     </form>
                 </div>
+
+
+
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <footer class="footer bg-black text-white py-3 position-relative">
-    <div class="container">
+    <div class="">
         <div class="row">
             <div class="col-12">
                 <h5>Find Us</h5>

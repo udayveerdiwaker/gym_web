@@ -1,13 +1,54 @@
 <?php
 include 'header.php';
-?>
+include 'connection.php';
+
+?><!-- Button trigger modal -->
+
 <section id="home" class="home section_same">
     <div class="container">
         <p class="fs-3 fw-bold">Best Gym In Town</p>
         <h1 class="display-1 text-white fw-bold text-center mb-4">Fitness & Gym Center</h1>
-        <a href="#services" class="hbtn text-white btn">Explore Our Services</a>
+        <a href="#services" class="btn_Explore btn">Explore Our Services</a>
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = htmlspecialchars($_POST["email"]);
+            $amount = htmlspecialchars($_POST["amount"]);
 
+            if (htmlspecialchars($email)) {
+                echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                    Payment of $$amount successful for $email. Thank you for joining!
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>";
+            }
+        }
+        ?>
+    </div>
+    </div>
 
+</section>
+
+<section class="body_cards">
+    <div class=" row row-cols-1 row-cols-md-2 g-0">
+        <div class="col">
+            <div class="card">
+                <div class="card-body body-end text-end">
+                    <p class="card-title">Body Building</p>
+                    <p class="card-text">Bodybuilding is the practice of developing muscle strength and size through weight training, nutrition, and rest. It emphasizes discipline, consistency, and dedication to achieve a sculpted, toned, and strong physique.</p>
+                    <a href="#services" class="btn_Join btn mt-3">Join Now</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body body-start">
+                    <p class="card-title">Muscle Building</p>
+                    <p class="card-text">Muscle building focuses on increasing muscle size and strength through resistance training and protein-rich nutrition. It involves progressive overload, and consistency achieve muscle physical performance.</p>
+                    <a href="#services" class="btn_Join btn mt-3">Join Now</a>
+
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

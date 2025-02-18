@@ -22,12 +22,24 @@ include 'header.php';
 
 ?>
 
-
+<div class="container-fluid page-header">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Contact Us</h4>
+        <div class="d-inline-flex">
+            <p class="m-0 text-white"><a class="text-white" href="home.php">Home</a></p>
+            <p class="m-0 text-white px-2">/</p>
+            <p class="m-0 text-white">Contact Us</p>
+        </div>
+    </div>
+</div>
 
 <!-- Contact Section -->
-<section id="contact" class="contact section">
-        <h2 class="fs-1 fw-bold text-center mt-4">Contact Us</h2>
-        <p class="fs-5 fw-bold text-danger text-center">Contact me and I help you.</p>
+
+<section id="contact" class="contact">
+    <p class="fs-5 fw-bold text_red text-center">Get In Touch</p>
+
+    <!-- <p class="display-4  font-weight-bold text_gray text-center">Email Us For Any Query</p> -->
+    <p class="display-6 text_gray font_weight fw-bold text-center">Need Help? Send Us an Email</p>
     <div data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
             <div class="col-lg-7">
@@ -35,36 +47,36 @@ include 'header.php';
                     <form action="" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
                         <div class="row gy-4">
                             <div class="col-md-6">
-                                <label for="name-field" class="pb-2">Your Name</label>
-                                <input type="text" name="name" id="name-field validationCustom01" class="form-control" required="">
+                                <label for="name-field" class="pb-2"></label>
+                                <input type="text" name="name" id="name-field validationCustom01" placeholder="Your Name" class="form-control" required="">
                                 <div class="valid-feedback">
                                     Looks Good.
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="number-field" class="pb-2">Contact</label>
-                                <input type="text" minlength="0" maxlength="10" class="form-control" name="number" id="number-field validationCustom02" required="">
+                                <label for="number-field" class="pb-2"></label>
+                                <input type="text" minlength="0" maxlength="10" class="form-control" name="number" id="number-field validationCustom02" required="" placeholder="Contact">
                                 <div class="invalid-feedback">
                                     Please Fill Your Contact Number.
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label for="email-field" class="pb-2">Your Email</label>
-                                <input type="email" class="form-control" name="email" id="email-field validationCustom03" required="">
+                                <label for="email-field" class="pb-2"></label>
+                                <input type="email" class="form-control" name="email" id="email-field validationCustom03" required="" placeholder="Your Email">
                                 <div class="invalid-feedback">
                                     Please Fill Your Email.
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label for="subject-field" class="pb-2">Subject</label>
-                                <input type="text" class="form-control" name="subject" id="subject-field validationCustom04" required="">
+                                <label for="subject-field" class="pb-2"></label>
+                                <input type="text" class="form-control" name="subject" id="subject-field validationCustom04" required="" placeholder="Subject">
                                 <div class="invalid-feedback">
                                     Please Write Your Subject.
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label for="message-field" class="pb-2">Message</label>
-                                <textarea class="form-control" name="message" rows="9" id="message-field validationCustom05" required=""></textarea>
+                                <label for="message-field" class="pb-2"></label>
+                                <textarea class="form-control textarea" name="message" rows="9" id="message-field validationCustom05" required="" placeholder="Message"></textarea>
                                 <div class="invalid-feedback">
                                     Please Write Your Massage.
                                 </div>
@@ -73,7 +85,7 @@ include 'header.php';
                                 <button type="submit" class="btn btn-outline-danger" name="submit">Send message</button>
                             </div> -->
                             <div class="input-group-append col-md-12 text-center mt-4">
-                                <button class="hbtn btn text-white " type="submit" name="submit">Send message</button>
+                                <button class="hbtn btn" type="submit" name="submit">Send message</button>
                             </div>
                         </div>
                         <?php
