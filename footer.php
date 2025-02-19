@@ -73,7 +73,7 @@
                     <div class="input-group">
                         <input type="email" class="form-control border border-danger border-2" placeholder="Enter your email" name="email" required>
                         <div class="input-group-append">
-                            <button class="hbtn btn btn-outline-danger text-white" type="submit">Subscribe</button>
+                            <button class="hbtn btn btn-outline-danger text-white">Subscribe</button>
                         </div>
                     </div>
                 </form>
@@ -82,7 +82,7 @@
                     $email = htmlspecialchars($_POST["email"]);
 
                     if (htmlspecialchars($email)) {
-                        echo "<div class='alert alert-success alert-dismissible fade show mt-3' role='alert'>Your subscription request has been sent. Thank you!
+                        echo "<div class='alert alert-success alert-dismissible fade show mt-3' role='alert'>Your  subscription request has been sent. Thank you!
                             </div>";
                     } else {
                         echo "<div class='alert alert-danger' role='alert'>

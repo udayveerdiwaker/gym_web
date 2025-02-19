@@ -963,7 +963,7 @@ div {
     border: 2px solid #ff4757;
     /* Vibrant red border */
     color: #ffffff;
-    border-radius: 10px;
+    border-radius: px;
 }
 
 .footer .form-control:focus {
@@ -975,6 +975,7 @@ div {
     border-color: #ff4757;
     /* Vibrant red border */
     color: #ffffff;
+    
     transition: all 0.3s ease;
 }
 
