@@ -44,7 +44,7 @@ include 'header.php';
             <div class="row gy-4">
                 <div class="col-lg-7">
                     <form action="" method="post" class="php-email-form needs-validation" novalidate data-aos="fade-up" data-aos-delay="200">
-                        <div class="row gy-4">
+                        <div class="row">
                             <!-- Name Field -->
                             <div class="col-md-6">
                                 <label for="name-field" class="form-label pb-2"></label>
@@ -86,7 +86,7 @@ include 'header.php';
                             </div>
 
                             <!-- Submit Button -->
-                            <div class="col-md-12 text-center ">
+                            <div class="col-md-12 text-center gy-4">
                                 <button type="submit" class="btn btn-primary" name="submit">Send Message</button>
                             </div>
                         </div>
@@ -94,7 +94,7 @@ include 'header.php';
                 </div>
 
                 <!-- Google Map -->
-                <div class="col-lg-5">
+                <div class="col-lg-5 h-100">
                     <div class="info-wrap">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d756.262337843902!2d78.27726946955646!3d30.092403158779344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39093e09c40d8083%3A0x49bf374532e85cc6!2sstore%20India!5e1!3m2!1sen!2sin!4v1736334680519!5m2!1sen!2sin" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>

@@ -11,10 +11,8 @@ body {
 }
 
 :root {
-    --bg-red: #e31c25;
-    --text-red: #e31c25;
-    --hover-red: #e31c25;
-    --hover-Red: #c00912;
+    --all-red: #e31c25;
+    --hover-red: #c00912;
     --btn-color: #ff4d4d;
     --text-gray: #343a40;
     --bg-black: #111;
@@ -26,7 +24,7 @@ body {
 }
 
 .text_red {
-    color: var(--text-red);
+    color: var(--all-red);
 }
 
 .text_black {
@@ -54,7 +52,7 @@ body {
 }
 
 .navbar a:hover {
-    color: var(--hover-red);
+    color: var(--btn-color);
     /* text-shadow: 2px 2px 10px var(--hover-white); */
 }
 
@@ -101,7 +99,7 @@ section {
 h4.display-4 {
     font-size: 2.5rem;
     /* Adjust the font size as needed */
-    color: #ffffff;
+    color: var(--text-white);
     font-weight: bold;
     text-transform: uppercase;
     margin: 0;
@@ -117,11 +115,11 @@ h4.display-4 {
 .d-inline-flex p {
     margin: 0;
     font-size: 1rem;
-    color: #ffffff;
+    color: var(--text-white);
 }
 
 .d-inline-flex a {
-    color: #ffffff;
+    color: var(--text-white);
     text-decoration: none;
 }
 
@@ -130,7 +128,7 @@ h4.display-4 {
 }
 
 .text-white {
-    color: #ffffff !important;
+    color: var(--text-white) !important;
 }
 
 .font-weight-bold {
@@ -159,7 +157,7 @@ h4.display-4 {
 
 /* Base section styling */
 #home {
-    background-color: #000;
+    background-color: var(--bg-black);
     /* opacity: 0.9; */
     padding: 100px 20px;
     height: 100vh;
@@ -190,13 +188,12 @@ h4.display-4 {
 }
 
 .btn_Explore:hover {
-    background-color: var(--bg-red);
+    background-color: var(--all-red);
     color: var(--text-white);
 }
 
 .body_cards {
     height: 60vh;
-    padding: 60px 20px;
     background-color: #f7f7f7;
 }
 
@@ -221,7 +218,7 @@ h4.display-4 {
 
 .body_cards .body-end {
     padding: 35px;
-    background-color: var(--bg-red);
+    background-color: var(--all-red);
 }
 
 .body_cards .body-start {
@@ -289,7 +286,7 @@ h4.display-4 {
 }
 
 .plan-card {
-    background: white;
+    background: var(--bg-white);
     padding: 2rem;
     border-radius: 10px;
     position: relative;
@@ -303,7 +300,7 @@ h4.display-4 {
 
 .featured {
     background: linear-gradient(135deg, #f83f3f, #f36161);
-    color: white;
+    color: var(--text-white);
 }
 
 .recommended-badge {
@@ -351,7 +348,7 @@ h4.display-4 {
     display: inline-block;
     padding: 1rem 2rem;
     color: var(--text-gray);
-    background-color: var(--bg-red);
+    background-color: var(--all-red);
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
@@ -360,7 +357,7 @@ h4.display-4 {
 }
 
 .cta-button:hover {
-    background: var(--hover-Red);
+    background: var(--hover-red);
 }
 
 @media (max-width: 768px) {
@@ -501,19 +498,19 @@ h4.display-4 {
 }
 
 .form-container {
-    background: rgba(255, 255, 255, 0.50);
+    background: rgba(255, 255, 255, 0.60);
     padding: 2.5rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: 0 auto;
 }
 
-.form-container h3 {
-    color: var(--text-gray);
+.form-container h2 {
+    color: var(--text-white);
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     text-align: center;
 }
 
@@ -975,7 +972,7 @@ div {
     border-color: #ff4757;
     /* Vibrant red border */
     color: #ffffff;
-    
+
     transition: all 0.3s ease;
 }
 
