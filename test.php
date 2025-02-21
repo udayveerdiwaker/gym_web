@@ -44,7 +44,20 @@ include 'header.php';
 
 // $conn->close();
 ?>
+<style>
+    .field-icon {
+        float: right;
+        margin-left: -25px;
+        margin-top: -25px;
+        position: relative;
+        z-index: 2;
+    }
 
+    .container {
+        padding-top: 50px;
+        margin: auto;
+    }
+</style>
 <!-- Membership Plan Form Section -->
 <section class="py-5 bg-black section contact">
     <div class="container">
@@ -111,36 +124,25 @@ include 'header.php';
                     </form>
                 </div>
             </div>
-        </div>
+        </div>26240
     </div>
     <!-- Button trigger modal -->
     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Launch static backdrop modal
     </button> -->
 
-    <!-- Modal -->
-    <div class="modal fade" >
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
+<script>
+
+</script>
 
 <!-- Bootstrap 5 JavaScript & Popper.js -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+
+
 <?php
 include 'footer.php';
 ?>

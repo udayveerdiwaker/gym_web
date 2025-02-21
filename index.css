@@ -16,11 +16,12 @@ body {
     --btn-color: #ff4d4d;
     --text-gray: #343a40;
     --bg-black: #111;
-    --text-black: #000;
+    --text-black: #222;
     --text-white: #fff;
     --hover-white: #fff;
     --bg-white: #fff;
     --border-color: #ccc;
+    --bg-input: #f8f9fa;
 }
 
 .text_red {
@@ -514,6 +515,7 @@ h4.display-4 {
     letter-spacing: 2px;
     margin-bottom: 3rem;
     text-align: center;
+    text-shadow: 2px 2px 2px var(--text-black);
 }
 
 /* .Form h2 {
@@ -527,10 +529,17 @@ h4.display-4 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 18px;
-    color: var(--text-gray);
+    color: var(--text-black);
 }
 
 
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+}
 
 .form-group {
     margin-bottom: 20px;
@@ -557,13 +566,13 @@ h4.display-4 {
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #ff4d4d;
+    border-color: var(--btn-color);
     box-shadow: 0 0 8px rgba(255, 77, 77, 0.2);
 }
 
 .form-group button {
-    background: #ff4d4d;
-    color: white;
+    background: var(--btn-color);
+    color: var(--text-white);
     padding: 15px 30px;
     border: none;
     border-radius: 8px;
@@ -577,7 +586,7 @@ h4.display-4 {
 }
 
 .form-group button:hover {
-    background: #ff3333;
+    background: var(--all-red);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
 }
@@ -623,7 +632,6 @@ h4.display-4 {
 .payment {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
         url('gym.jpg') center/cover fixed;
-    color: #ffffff;
     margin: 0;
     padding: 0;
     display: flex;
@@ -634,7 +642,7 @@ h4.display-4 {
 
 /* Form Container */
 .Form {
-    background-color: #fff;
+    background-color: var(--text-white);
     padding: 30px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.60);
@@ -657,40 +665,7 @@ h4.display-4 {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #333;
-}
-
-.form_group input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-.form_group input[type="text"]:focus {
-    border-color: #ff4d4d;
-    outline: none;
-    background-color: #fff;
-}
-
-/* Button Styling */
-.form_group button {
-    width: 100%;
-    padding: 12px;
-    background-color: #ff4d4d;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.form_group button:hover {
-    background-color: #e31c25;
+    color: var(--text-gray);
 }
 
 /* Responsive Design */

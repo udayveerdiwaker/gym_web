@@ -63,8 +63,16 @@ include 'header.php';
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" required>
+                            <input type="password" id="password" name="password" value="" required>
+                            <input type="checkbox" onclick="myFunction()">
                         </div>
+                        <!-- <div class="form-group">
+                            <label class="col-md-4 control-label">Password:</label>
+                            <input type="password" id="password" name="password" name="password" value="secret">
+
+
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div> -->
                         <!-- <div class="form-group">
                             <label for="payment">Payment Method</label>
                             <select type="select" id="payment" name="payment" required>
@@ -113,9 +121,18 @@ include 'header.php';
     </div>
 </section>
 
+<script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
 <!-- Bootstrap 5 JavaScript & Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
 <?php
 include 'footer.php';
 ?>
