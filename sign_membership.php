@@ -74,6 +74,17 @@ include 'header.php';
                                 <option value="GooglePay">GooglePay</option>
                             </select>
                         </div> -->
+                        <!-- <div class=" form-group">
+                            <label for="membership" class="form-label">Select Membership Plan</label>
+                            <select class="form-select" id="membership" name="membership" required>
+                                <option value="" disabled selected>Select Plan</option>
+                                <?php foreach ($plans as $plan): ?>
+                                    <option value="<?= $plan['plan_name']; ?>">
+                                        <?= $plan['plan_name']; ?> - $<?= number_format($plan['price'], 2); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div> -->
                         <div class="form-group">
                             <label for="membership">Membership Plan:</label>
                             <select type="select" id="membership" name="membership" required>
@@ -82,6 +93,12 @@ include 'header.php';
                                 <option value="premium">Premium - ₹4999/month</option>
                                 <option value="Elite">Elite - ₹7999/month</option>
                             </select>
+                        </div>
+                        <div class=" form-check mb-3">
+                            <input class="form-check-input" type="checkbox" value="" id="terms" required>
+                            <label class="form-check-label" for="terms">
+                                I agree to the <a href="#">terms and conditions</a>.
+                            </label>
                         </div>
                         <div class="form-group">
                             <button type="submit">Sign Up</button>
