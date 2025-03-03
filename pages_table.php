@@ -1,26 +1,13 @@
 <?php
-include 'config.php';
-
-
-
+include 'admin.php';
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $conn->query("DELETE FROM pages WHERE id=$id");
     header('Location: pages_table.php');
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
+<div class="container">
     <h2 class="mt-4">Existing Pages</h2>
     <table class="table table-bordered">
         <tr>
@@ -43,6 +30,4 @@ if (isset($_GET['delete'])) {
 
     <!-- <button type='submit' name='update'></button> -->
     <a href="add_pages.php" class="btn btn-primary mt-2">Add Pages</a>
-</body>
-
-</html>
+</div>
