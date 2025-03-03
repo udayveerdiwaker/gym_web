@@ -533,14 +533,6 @@ h4.display-4 {
 }
 
 
-.field-icon {
-    float: right;
-    margin-left: -25px;
-    margin-top: -25px;
-    position: relative;
-    z-index: 2;
-}
-
 .form-group {
     margin-bottom: 20px;
 }

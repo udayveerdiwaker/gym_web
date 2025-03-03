@@ -64,7 +64,7 @@ include 'header.php';
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" id="password" name="password" value="" required>
-                            <input type="checkbox" onclick="myFunction()">
+                            <!-- <input type="checkbox" onclick="myFunction()"> -->
                         </div>
                         <!-- <div class="form-group">
                             <label class="col-md-4 control-label">Password:</label>
@@ -105,7 +105,7 @@ include 'header.php';
                         <div class=" form-check mb-3">
                             <input class="form-check-input" type="checkbox" value="" id="terms" required>
                             <label class="form-check-label" for="terms">
-                                I agree to the <a href="#">terms and conditions</a>.
+                                I agree to the <a href="term_con.php">terms and conditions</a>.
                             </label>
                         </div>
                         <div class="form-group">

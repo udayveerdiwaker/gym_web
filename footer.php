@@ -95,7 +95,7 @@
 
         <!-- Copyright -->
         <div class="text-center mt-5">
-            <p>&copy; 2025 Fitness Gym.</p>
+        <p>&copy; 2025 [Fitness Gym]. All rights reserved.</p>
         </div>
     </div>
 </footer>
