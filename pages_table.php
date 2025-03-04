@@ -20,7 +20,7 @@ if (isset($_GET['delete'])) {
             echo "<tr>
                 <td>{$page['title']}</td>
                 <td>
-                    <a href='pages_table.php?edit={$page['id']}' class='btn btn-warning btn-sm'>Edit</a>
+                    <a href='update.php?edit={$page['id']}' class='btn btn-warning btn-sm'>Edit</a>
                     <a href='pages_table.php?delete={$page['id']}' class='btn btn-danger btn-sm' onclick='return confirm('Are you sure?'')'>Delete</a>
                 </td>
             </tr>";

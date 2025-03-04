@@ -2,7 +2,7 @@
 // admin.php - Admin Panel with CRUD Operations
 // session_start();
 include 'admin.php';
-if (!isset($_SESSION['user']));
+// if (!isset($_SESSION['user']));
 
 if (isset($_POST['add'])) {
     $title = $_POST['title'];
