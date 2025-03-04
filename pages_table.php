@@ -31,3 +31,4 @@ if (isset($_GET['delete'])) {
     <!-- <button type='submit' name='update'></button> -->
     <a href="add_pages.php" class="btn btn-primary mt-2">Add Pages</a>
 </div>
+
