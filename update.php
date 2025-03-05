@@ -5,6 +5,7 @@ if (isset($_POST['update'])) {
     $title = $_POST['title'];
     $content = $_POST['content'];
     $conn->query("UPDATE pages SET title='$title', content='$content' WHERE id=$id");
+    header('Location: pages_table.php');
 }
 ?>
 
@@ -20,5 +21,5 @@ if (isset($_POST['update'])) {
             <textarea name='content' class="form-control mt-2" required><?php echo $page['content']; ?></textarea>
             <button type='submit' name='update' class="btn btn-primary mt-2">Update Page</button>
         </form>
-        <?php } ?>
+    <?php } ?>
     </div>
