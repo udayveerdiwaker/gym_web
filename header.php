@@ -15,7 +15,7 @@ $allPages = $conn->query("SELECT * FROM pages");
     <!-- Custom CSS -->
     <style>
         body {
-            background-color:rgb(132, 180, 228);
+            background-color: rgb(132, 180, 228);
         }
 
         .navbar {
@@ -77,25 +77,8 @@ $allPages = $conn->query("SELECT * FROM pages");
     </div>
 
     <!-- Dynamic Page Content -->
-    <div class="container page-content">
-        <?php
-        if ($result->num_rows > 0) {
-            $page = $result->fetch_assoc();
-            echo "<h2>" . htmlspecialchars($page['title']) . "</h2>";
-            echo "<p>" . htmlspecialchars($page['content']) . "</p>";
-        } else {
-            echo "<h2>Welcome to Our Gym</h2>";
-            echo "<p>Explore our website to learn more about our services, classes, and membership plans.</p>";
-        }
-        ?>
-    </div>
+ 
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2023 Gym Website. All rights reserved.</p>
-        </div>
-    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
