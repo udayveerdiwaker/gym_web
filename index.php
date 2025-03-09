@@ -18,6 +18,9 @@ include 'header.php';
         $page = $result->fetch_assoc();
         echo "<h2>" . htmlspecialchars($page['title']) . "</h2>";
         echo "<p>" . htmlspecialchars($page['content']) . "</p>";
+    }
+    if (!empty($page['image'])) {
+        echo "<img src='uploads/" . htmlspecialchars($page['image']) . "' alt='Page Image' class='img-fluid mt-3'>";
     } else {
         echo "<h2>Welcome to Our Gym</h2>";
         echo "<p>Explore our website to learn more about our services, classes, and membership plans.</p>";
