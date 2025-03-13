@@ -9,7 +9,8 @@ if (isset($_POST['add'])) {
     $target = "uploads/" . basename($image);
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
     $slug = strtolower(str_replace(' ', '-', $title));
-    $conn->query("INSERT INTO pages (title, content, image, slug) VALUES ('$title', '$content', '$image', '$slug')");
+    $sql = "INSERT INTO pages (title, content, image, slug) VALUES ('$title', '$content', '$image', '$slug')";
+    mysqli_query($conn, $sql);
     header('Location: pages_table.php');
 }
 ?>

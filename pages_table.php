@@ -8,8 +8,8 @@ if (isset($_GET['delete'])) {
 $pages = $conn->query("SELECT * FROM pages");
 
 ?>
-<div class="card p-4 mt-4">
-    <table class="table table-bordered table-striped">
+<div class="p-4 mt-4">
+    <table class="table ">
         <thead class="table-dark">
             <tr>
                 <th>Title</th>

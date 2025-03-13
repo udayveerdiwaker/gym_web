@@ -9,49 +9,50 @@ $allPages = $conn->query("SELECT * FROM pages");
 <html lang="en">
 
 <head>
-    <title>Gym Website</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <!-- Custom CSS -->
-    <style>
-        body {
-            background-color: rgb(132, 180, 228);
-        }
 
-        .navbar {
-            margin-bottom: 20px;
-        }
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script> -->
 
-        .jumbotron {
-            background: url('gym-banner.jpg') no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-        }
+        <link rel="stylesheet" href="index.css">
+        <title>Fitness Gym</title>
+    </head>
 
-        .page-content {
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer {
-            background-color: #343a40;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 20px;
-        }
-    </style>
-</head>
 
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-1 fw-bold text-wrap" href="index.php">
+                    GYM FITNESS
+                </a>
+                <button class="navbar-toggler text-danger bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text_white justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <?php foreach ($allPages as $page) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?page=<?php echo $page['slug']; ?>"><?php echo $page['title']; ?></a>
+                        </li>
+                    <?php } ?>
+                </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    </header>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Gym Website</a>
+            <a class="navbar-brand" href="index.php">Dynamic Web</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -65,9 +66,10 @@ $allPages = $conn->query("SELECT * FROM pages");
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <!-- Hero Section (Jumbotron) -->
+     
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4">Welcome to Our Gym</h1>
@@ -77,7 +79,7 @@ $allPages = $conn->query("SELECT * FROM pages");
     </div>
 
     <!-- Dynamic Page Content -->
- 
+
 
 
     <!-- Bootstrap JS -->
