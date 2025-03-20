@@ -37,13 +37,13 @@ $allPages = $conn->query("SELECT * FROM pages");
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse text_white justify-content-end" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <?php foreach ($allPages as $page) { ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?page=<?php echo $page['slug']; ?>"><?php echo $page['title']; ?></a>
-                        </li>
-                    <?php } ?>
-                </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <?php foreach ($allPages as $page) { ?>
+                            <li class="nav-item nav-link btn btn-warning text-dark ms-2">
+                                <a class="nav-link" href="index.php?page=<?php echo $page['slug']; ?>"><?php echo $page['title']; ?></a>
+                            </li>
+                        <?php } ?>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -69,7 +69,7 @@ $allPages = $conn->query("SELECT * FROM pages");
     </nav> -->
 
     <!-- Hero Section (Jumbotron) -->
-     
+
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-4">Welcome to Our Gym</h1>

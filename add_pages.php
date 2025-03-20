@@ -15,7 +15,6 @@ if (isset($_POST['add'])) {
 }
 ?>
 
-
 <style>
     body {
         background: url('background.jpg') no-repeat center center fixed;
