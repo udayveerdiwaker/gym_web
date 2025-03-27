@@ -26,20 +26,21 @@ $allPages = $conn->query("SELECT * FROM pages");
 
 
 <body>
-    <!-- Navigation Bar -->
+
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand fs-1 fw-bold text-wrap" href="index.php">
-                    GYM FITNESS
-                </a>
-                <button class="navbar-toggler text-danger bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="home.php">Dynamic Web</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse text_white justify-content-end" id="navbarNav">
+                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.php">Home</a>
+                        </li>
                         <?php foreach ($allPages as $page) { ?>
-                            <li class="nav-item nav-link btn btn-warning text-dark ms-2">
+                            <li class="nav-item">
                                 <a class="nav-link" href="index.php?page=<?php echo $page['slug']; ?>"><?php echo $page['title']; ?></a>
                             </li>
                         <?php } ?>
@@ -49,41 +50,12 @@ $allPages = $conn->query("SELECT * FROM pages");
         </nav>
 
 
+
     </header>
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">Dynamic Web</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <?php foreach ($allPages as $page) { ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?page=<?php echo $page['slug']; ?>"><?php echo $page['title']; ?></a>
-                        </li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-
-    <!-- Hero Section (Jumbotron) -->
-
-    <div class="jumbotron">
-        <div class="container">
-            <h1 class="display-4">Welcome to Our Gym</h1>
-            <p class="lead">Your journey to a healthier lifestyle starts here.</p>
-            <a href="index.php?page=about" class="btn btn-primary btn-lg">Learn More</a>
-        </div>
-    </div>
-
-    <!-- Dynamic Page Content -->
-
-
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

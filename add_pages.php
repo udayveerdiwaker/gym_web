@@ -5,11 +5,12 @@ include 'admin.php';
 if (isset($_POST['add'])) {
     $title = $_POST['title'];
     $content = $_POST['content'];
-    $image = $_FILES['image']['name'];
-    $target = "uploads/" . basename($image);
-    move_uploaded_file($_FILES['image']['tmp_name'], $target);
+    // $image = $_FILES['image']['name'];
+    // $target = "uploads/" . basename($image);
+    // move_uploaded_file($_FILES['image']['tmp_name'], $target);
     $slug = strtolower(str_replace(' ', '-', $title));
-    $sql = "INSERT INTO pages (title, content, image, slug) VALUES ('$title', '$content', '$image', '$slug')";
+    // $sql = "INSERT INTO pages (title, content, image, slug) VALUES ('$title', '$content', '$image', '$slug')";
+    $sql = "INSERT INTO pages (title, content, slug) VALUES ('$title', '$content', '$slug')";
     mysqli_query($conn, $sql);
     header('Location: pages_table.php');
 }
@@ -17,7 +18,7 @@ if (isset($_POST['add'])) {
 
 <style>
     body {
-        background: url('background.jpg') no-repeat center center fixed;
+        background: url('foad.jpg') no-repeat center center fixed;
         background-size: cover;
     }
 
@@ -47,10 +48,10 @@ if (isset($_POST['add'])) {
                 <label for="content" class="form-label">Page Content</label>
                 <textarea name="content" id="content" class="form-control" rows="5" required></textarea>
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="image" class="form-label">Page Image</label>
                 <input type="file" name="image" id="image" class="form-control">
-            </div>
+            </div> -->
             <button type="submit" name="add" class="btn btn-success">Create Page</button>
         </form>
     </div>

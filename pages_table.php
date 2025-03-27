@@ -8,28 +8,38 @@ if (isset($_GET['delete'])) {
 $pages = $conn->query("SELECT * FROM pages");
 
 ?>
-<div class="p-4 mt-4">
-    <table class="table ">
+<style>
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+
+    .table-dark {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .btn {
+        margin-right: 5px;
+        /* Space between buttons */
+    }
+</style>
+<div class="container p-4 mt-4">
+    <h2 class="mb-4">Page Management</h2>
+    <table class="table table-striped">
         <thead class="table-dark">
             <tr>
                 <th>Title</th>
                 <th>Content</th>
-                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <?php while ($page = $pages->fetch_assoc()) { ?>
                 <tr>
-                    <td><?php echo $page['title']; ?></td>
-                    <td><?php echo substr($page['content'], 0, 100) . '...'; ?></td>
-                    <td>
-                        <?php if (!empty($page['image'])) { ?>
-                            <img src="uploads/<?php echo $page['image']; ?>" alt="Page Image" width="100">
-                        <?php } else { ?>
-                            No Image
-                        <?php } ?>
-                    </td>
+                    <td><?php echo htmlspecialchars($page['title']); ?></td>
+                    <td><?php echo htmlspecialchars(substr($page['content'], 0, 100)) . '...'; ?></td>
                     <td>
                         <a href="update.php?edit=<?php echo $page['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                         <a href="pages_table.php?delete=<?php echo $page['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this page?');">Delete</a>
@@ -39,9 +49,8 @@ $pages = $conn->query("SELECT * FROM pages");
         </tbody>
     </table>
     <a href="add_pages.php">
-        <button type='submit' name='add' class="btn btn-success btn-block mt-3">
+        <button type="button" class="btn btn-success btn-block mt-3">
             <i class="fas fa-plus-circle"></i> Create Page
-        </button></a>
-</div>
-<!-- Add Page Button -->
+        </button>
+    </a>
 </div>
