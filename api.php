@@ -33,6 +33,8 @@
 </body>
 
 </html>
+
+
 <?php
 include "config.php"; // Database connection
 
@@ -46,12 +48,17 @@ if (!empty($city)) {
     $data = json_decode($response, true);
 
     if ($response && isset($data["main"]["temp"])) {
-        $weatherInfo = "Temperature in $city: " . $data["main"]["temp"] . "°C";
+        $temp = $data["main"]["temp"];  //  (°C)
+
+        // $weatherInfo = "Temperature in $city: " . $data["main"]["temp"] . "°C";
+        $humidity = $data["main"]["humidity"]; //  (%)
+        $windSpeed = $data["wind"]["speed"]; // (m/s)
+        $weatherDesc = $data["weather"][0]["description"];
     } else {
-        $weatherInfo = "<div class='alert alert-danger'>Weather data not available for '$city'.</div>";
+        $temp = "<div class='alert alert-danger'>Weather data not available for '$city'.</div>";
     }
 } else {
-    $weatherInfo = "Please enter a city.";
+    $temp = "Please enter a city.";
 }
 
 
@@ -116,7 +123,15 @@ if (isset($_POST['weather'])) {
             </div>
             <button type="submit" name="weather" class="btn btn-primary w-100">Get Weather</button>
         </form>
-        <p class="text-center mt-4 text-capitalize fs-4"><strong><?php echo $weatherInfo; ?></strong></p>
+        <p class="text-center mt-4 text-capitalize fs-4"><strong>
+                <?php
+                // echo $weatherInfo;
+                echo "<h2>Weather in $city</h2>";
+                echo "<p>🌡️ Temperature: <b>$temp °C</b></p>";
+                echo "<p>💨 Wind Speed: <b>$windSpeed m/s</b></p>";
+                echo "<p>💧 Humidity: <b>$humidity%</b></p>";
+                echo "<p>🌤️ Condition: <b>" . ucfirst($weatherDesc) . "</b></p>";
+                ?></strong></p>
     </div>
 </body>
 
