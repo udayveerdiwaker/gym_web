@@ -36,7 +36,7 @@
 
 
 <?php
-include "config.php"; // Database connection
+include "config.php";
 
 $apiKey = "95a72c423b3e3a08ea34b3a74018e275"; // Replace with your OpenWeather API Key
 $city = isset($_POST["city"]) ? $_POST["city"] : "rishikesh"; // Default city
@@ -88,15 +88,16 @@ if (isset($_POST['weather'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: rgb(218, 219, 219);
         }
 
         .container {
             max-width: 500px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .container>input {
+        .container>form>input>.form-control {
             box-shadow: none;
         }
     </style>
