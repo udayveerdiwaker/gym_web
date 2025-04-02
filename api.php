@@ -1,3 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Integration Example</title>
+</head>
+
+<body>
+
+    <!-- <button onclick="getWeather()">Get Weather</button>
+    <p id="weatherResult"></p> -->
+
+    <script>
+        // async function getWeather() {
+        //     const apiKey = "95a72c423b3e3a08ea34b3a74018e275"; // Replace with your API key
+        //     const city = "haridwar";
+        //     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+        //     try {
+        //         const response = await fetch(url);
+        //         const data = await response.json();
+        //         document.getElementById("weatherResult").innerText = `Temperature: ${data.main.temp}°C`;
+        //     } catch (error) {
+        //         console.error("Error fetching data", error);
+        //     }
+        // }
+    </script>
+
+
+
+</body>
+
+</html>
+
+
 <?php
 include "config.php";
 
@@ -11,13 +48,11 @@ if (!empty($city)) {
 
 
     $response =  @file_get_contents($url);
+    // print_r($response);
     // exit; 
     $data = json_decode($response, true);
-    echo "<pre>";
-    print_r($data);
-    echo "</pre>";
 
-    if ($response) {
+    if ($response && isset($data["main"]["temp"])) {
 
         $temp = $data["main"]["temp"];  //  (°C)
         // $weatherInfo = "Temperature in $city: " . $data["main"]["temp"] . "°C";
@@ -31,7 +66,7 @@ if (!empty($city)) {
     }
 
 
-    if (isset($_POST['weather'])) {
+    if ($response && isset($_POST['weather'])) {
         $name = $_POST["name"];
         $email = $_POST["email"];
         $city = $_POST["city"];
@@ -52,8 +87,6 @@ if (!empty($city)) {
 
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,7 +140,7 @@ if (!empty($city)) {
                 echo "<p>🌡️ Temperature: <b>$temp °C</b></p>";
                 echo "<p>💨 Wind Speed: <b>$windSpeed m/s</b></p>";
                 echo "<p>💧 Humidity: <b>$humidity%</b></p>";
-                echo "<p>🌤️ Condition: <b>$weatherDesc</b></p>";
+                echo "<p>🌤️ Condition: <b>" . ucfirst($weatherDesc) . "</b></p>";
                 ?></strong></p>
     </div>
 </body>
