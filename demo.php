@@ -1,59 +1,47 @@
 <?php
 include "config.php";
 
-$apiKey = "95a72c423b3e3a08ea34b3a74018e275"; // Replace with your OpenWeather API Key
-$city = isset($_POST["city"]) ? $_POST["city"] : "rishikesh"; // Default city
-// echo $city;
+$apiKey = "95a72c423b3e3a08ea34b3a74018e275";
+$city = isset($_POST["city"]) ? $_POST["city"] : "rishikesh";
+// print_r($city);
 
 if (!empty($city)) {
     $url = "https://api.openweathermap.org/data/2.5/weather?q=" . urlencode($city) . "&appid=$apiKey&units=metric";
 
-
-
-    $response =  @file_get_contents($url);
-    // exit; 
-    $data = json_decode($response, true);
+    $resp = @file_get_contents($url);
+    $data = json_decode($resp, true);
     echo "<pre>";
     print_r($data);
     echo "</pre>";
 
-    if ($response) {
-
-        $temp = $data["main"]["temp"];  //  (°C)
-        // $weatherInfo = "Temperature in $city: " . $data["main"]["temp"] . "°C";
-        $humidity = $data["main"]["humidity"]; //  (%)
-        $windSpeed = $data["wind"]["speed"]; // (m/s)
-        $weatherDesc = $data["weather"][0]["description"];
-        // $city = @$_POST["city"];
-
+    if ($resp) {
+        $temp = $data["main"]["temp"];
+        $des = $data["weather"][0]["description"];
     } else {
-        $temp = "<div class='alert alert-danger'>Weather data not available for '$city'.</div>";
+        $temp = "<div class='alert alert-danger' role='alert'>Weather data in no availble for <b>$city</b></div>";
     }
 
 
-    if (isset($_POST['weather'])) {
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $city = $_POST["city"];
+    if (isset($_POST["weather"])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $city = $_POST['city'];
 
-        $sql = "INSERT INTO api (`name`, `email`, `city`, `temperature`, `humidity`, `wind_speed`, `description`) VALUES ('$name', '$email', '$city', '$temp', '$humidity', '$windSpeed', '$weatherDesc')";
-
-        $check = mysqli_query($conn, $sql);
+        $sql = "INSERT INTO `demo`(`name`, `email`, `city`, `temp`) VALUES ('$name', '$email','$city','$temp')";
+        $check =  mysqli_query($conn, $sql);
 
         if ($check) {
             $message = "<p class='text-capitalize'>thank you <b>Mr. $name </b> and this is your city <b>$city</b></p>";
         } else {
-            $message = "Error: " . $conn->error;
+            $message = "<div class='alert alert-danger'>City and Name not available</p>";
         }
     }
 } else {
-    $temp = "Please enter a info.";
+    echo '<div class="alert alert-danger" role="alert">
+            City is not available
+            </div>';
 }
-
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,6 +74,7 @@ if (!empty($city)) {
             echo "<div class='alert alert-info'>$message</div>";
         } ?>
         <form method="POST" action="">
+
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" name="name">
@@ -102,13 +91,11 @@ if (!empty($city)) {
         </form>
         <p class="text-center mt-4 text-capitalize fs-4"><strong>
                 <?php
-                // echo $weatherInfo;
-                echo "<h2>Weather in $city</h2>";
-                echo "<p>🌡️ Temperature: <b>$temp °C</b></p>";
-                echo "<p>💨 Wind Speed: <b>$windSpeed m/s</b></p>";
-                echo "<p>💧 Humidity: <b>$humidity%</b></p>";
-                echo "<p>🌤️ Condition: <b>$weatherDesc</b></p>";
-                ?></strong></p>
+                echo "Weather in your city <b>$city </b> .<br>";
+                echo "<p>🌡️ Tamprature : <b>$temp</b></p>";
+                echo "<p> description : <b>$des</b></p>";
+                ?>
+            </strong></p>
     </div>
 </body>
 

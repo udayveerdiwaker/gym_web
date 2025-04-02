@@ -26,7 +26,24 @@
 </head>
 
 <body>
+    <!-- <button onclick="getWeather()">Get Weather</button>
+    <p id="weatherResult"></p> -->
 
+    <script>
+        // async function getWeather() {
+        //     const apiKey = "95a72c423b3e3a08ea34b3a74018e275"; // Replace with your API key
+        //     const city = "haridwar";
+        //     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+        //     try {
+        //         const response = await fetch(url);
+        //         const data = await response.json();
+        //         document.getElementById("weatherResult").innerText = `Temperature: ${data.main.temp}°C`;
+        //     } catch (error) {
+        //         console.error("Error fetching data", error);
+        //     }
+        // }
+    </script>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">GymName</a>
