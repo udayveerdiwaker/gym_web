@@ -106,9 +106,6 @@ if (!empty($city)) {
                 echo "<p>Country : <b>$country</b></p>";
                 echo "<p>Timezone : <b>" . date("h:i:s A", $timezone) . "</b></p>";
                 echo "<p>Sunrise Time : <b>" . date("d-m-Y H:i:s", $sunrise) . "</b></p>";
-
-                echo ("<br>Sunrise time: ");
-                echo (date_sunrise(time(), SUNFUNCS_RET_STRING, $sunset));
                 echo "<p>Sunset Time : <b>" . date("d-m-Y H:i:s", $sunset) . "</b></p>";
                 // echo "Sunrise Time: " . date("Y-m-d H:i:s", $sunrise) . "\n";
                 // Converts the timestamp to a human-readable format
