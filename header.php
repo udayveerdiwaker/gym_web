@@ -4,6 +4,7 @@ include 'config.php';
 $slug = isset($_GET['page']) ? $_GET['page'] : '';
 $result = $conn->query("SELECT * FROM pages WHERE slug='$slug'");
 $allPages = $conn->query("SELECT * FROM pages");
+
 ?>
 
 <!doctype html>

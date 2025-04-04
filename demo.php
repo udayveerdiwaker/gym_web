@@ -1,52 +1,36 @@
 <?php
-include "config.php";
+include "function.php";
 
-$apiKey = "95a72c423b3e3a08ea34b3a74018e275";
-$city = isset($_POST["city"]) ? $_POST["city"] : "rishikesh";
-// print_r($city);
+$backgroundImage = 'clouds.jpg';
 
-if (!empty($city)) {
-    $url = "https://api.openweathermap.org/data/2.5/weather?q=" . urlencode($city) . "&appid=$apiKey&units=metric";
+if ($data) {
+    $weatherMain = strtolower($data['weather'][0]['main']);
 
-    $resp = @file_get_contents($url);
-    $data = json_decode($resp, true);
-    echo "<pre>";
-    print_r($data);
-    echo "</pre>";
-
-    if ($resp) {
-        $temp = $data["main"]["temp"];
-        $des = $data["weather"][0]["description"];
-        $wind = $data["wind"]["speed"];
-        $humidity = $data["main"]["humidity"];
-        $timezone =  $data["timezone"];
-        $country = $data["sys"]["country"];
-        $sunrise = $data["sys"]["sunrise"];
-        $sunset = $data["sys"]["sunset"];
-    } else {
-        $temp = "<div class='alert alert-danger' role='alert'>Weather data is not availble for <b>$city</b></div>";
+    switch ($weatherMain) {
+        case 'clear':
+            $backgroundImage = 'clouds.jpg';
+            break;
+        case 'rain':
+        case 'drizzle':
+            $backgroundImage = 'rainy-bg.jpg';
+            break;
+        case 'clouds':
+            $backgroundImage = 'cloudy-bg.jpg';
+            break;
+        case 'snow':
+            $backgroundImage = 'snow-bg.jpg';
+            break;
+        case 'thunderstorm':
+            $backgroundImage = 'storm-bg.jpg';
+            break;
+        case 'mist':
+        case 'fog':
+        case 'haze':
+            $backgroundImage = 'foggy-bg.jpg';
+            break;
     }
-
-
-    if (isset($_POST["weather"])) {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $city = $_POST['city'];
-
-        $sql = "INSERT INTO `demo`(`name`, `email`, `city`, `temp`, `desc`, `wind`, `humidity`) VALUES ('$name', '$email','$city','$temp', '$des', '$wind', '$humidity')";
-        $check =  mysqli_query($conn, $sql);
-
-        if ($check) {
-            $message = "<p class='text-capitalize'>thank you <b>Mr. $name </b> and this is your city <b>$city</b></p>";
-        } else {
-            $message = "<div class='alert alert-danger'>Name and City not available</p>";
-        }
-    }
-} else {
-    $temp = '<div class="alert alert-danger" role="alert">
-            City is not available
-            </div>';
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -58,7 +42,7 @@ if (!empty($city)) {
     <title>Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
+        /* body {
             background-color: rgb(255, 255, 255);
         }
 
@@ -70,12 +54,122 @@ if (!empty($city)) {
 
         .container>form>input>.form-control {
             box-shadow: none;
+        } */
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #72c6ef, #004e8f);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        /* Container for the form */
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            background-image: url('<?php echo $backgroundImage; ?>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+        }
+
+
+        /* Heading */
+        h2 {
+            color: #72c6ef;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Input field styles */
+        input[type="text"],
+        [type="email"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Button styles */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Weather result styles */
+        .weather-result {
+            margin-top: 20px;
+        }
+
+        .weather-result h3 {
+            color: #333;
+        }
+
+        .weather-result p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: red;
+            font-size: 18px;
+            margin-top: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div class="container mt-3 bg-light p-3">
+    <div class="container">
+        <h2 class="text-center fw-bold">Get Weather Information</h2>
+        <?php if (isset($message)) {
+            echo "<div class='alert alert-info'>$message</div>";
+        } ?>
+        <form action="result.php" method="post">
+
+            <div class="mb-3">
+                <label for="name"></label>
+                <input type="text" id="name" name="name" placeholder="Enter your Name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email"></label>
+                <input type="email" id="email" name="email" placeholder="Enter your Email">
+            </div>
+
+            <div class="mb-3">
+                <label for="city"></label>
+                <input type="text" id="city" name="city" placeholder="Enter City Name">
+            </div>
+            <button type="submit" name="weather" class="w-100">Get Weather</button>
+        </form>
+
+    </div>
+
+
+    <!-- <div class="container mt-3 bg-light p-3">
         <h2 class="text-center">Weather Info</h2>
         <?php if (isset($message)) {
             echo "<div class='alert alert-info'>$message</div>";
@@ -98,21 +192,44 @@ if (!empty($city)) {
         </form>
         <p class="text-center mt-4 text-capitalize fs-4"><strong>
                 <?php
-                echo "Weather in your city <b>$city </b>  .<br>";
-                echo "<p>🌡️  Tamprature : <b>$temp ℃</b> </p>";
-                echo "<p>💨 Speed  : <b>$wind M/S</b></p>";
-                echo "<p>💧  Humidity  : <b>$humidity%</b></p>";
-                echo "<p>🌤️ Description : <b>$des</b></p>";
-                echo "<p>Country : <b>$country</b></p>";
-                echo "<p>Timezone : <b>" . date("h:i:s A", $timezone) . "</b></p>";
-                echo "<p>Sunrise Time : <b>" . date("d-m-Y H:i:s", $sunrise) . "</b></p>";
-                echo "<p>Sunset Time : <b>" . date("d-m-Y H:i:s", $sunset) . "</b></p>";
+                // echo "Weather in your city <b>$city </b>  .<br>";
+                // echo "<p>🌡️  Tamprature : <b>$temp ℃</b> </p>";
+                // echo "<p>💨 Speed  : <b>$wind M/S</b></p>";
+                // echo "<p>💧  Humidity  : <b>$humidity%</b></p>";
+                // echo "<p>🌤️ Description : <b>$des</b></p>";
+                // echo "<p>Country : <b>$country</b></p>";
+                // echo "<p>Timezone : <b>" . date("h:i:s A", $timezone) . "</b></p>";
+                // echo "<p>Sunrise Time : <b>" . date("d-m-Y H:i:s", $sunrise) . "</b></p>";
+                // echo "<p>Sunset Time : <b>" . date("d-m-Y H:i:s", $sunset) . "</b></p>";
                 // echo "Sunrise Time: " . date("Y-m-d H:i:s", $sunrise) . "\n";
                 // Converts the timestamp to a human-readable format
                 // echo "Sunset Time: " . date("Y-m-d H:i:s", $sunset) . "\n";
                 ?>
             </strong></p>
-    </div>
+    </div> -->
+    <!-- <section class="vh-100" style="background-color: #f5f6f7;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-10 col-lg-8 col-xl-6">
+
+                    <div class="card bg-dark text-white" style="border-radius: 40px;">
+                        <div class="bg-image" style="border-radius: 35px;">
+                            <img src="foad.jpg"
+                                class="card-img" alt="weather" />
+                            <div class="mask" style="background-color: rgba(190, 216, 232, .5);"></div>
+                        </div>
+                        <div class="card-img-overlay text-white p-5">
+                            <h4 class="mb-0">Juneau, Alaska, US</h4>
+                            <p class="display-2 my-3">1.28°C</p>
+                            <p class="mb-2">Feels Like: <strong>-1.08 °C</strong></p>
+                            <h5>Snowy</h5>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section> -->
 </body>
 
 </html>
