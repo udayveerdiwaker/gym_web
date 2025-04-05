@@ -1,37 +1,6 @@
 <?php
 include "function.php";
 
-$backgroundImage = 'clouds.jpg';
-
-if ($data) {
-    $weatherMain = strtolower($data['weather'][0]['main']);
-
-    switch ($weatherMain) {
-        case 'clear':
-            $backgroundImage = 'clouds.jpg';
-            break;
-        case 'rain':
-        case 'drizzle':
-            $backgroundImage = 'rainy-bg.jpg';
-            break;
-        case 'clouds':
-            $backgroundImage = 'cloudy-bg.jpg';
-            break;
-        case 'snow':
-            $backgroundImage = 'snow-bg.jpg';
-            break;
-        case 'thunderstorm':
-            $backgroundImage = 'storm-bg.jpg';
-            break;
-        case 'mist':
-        case 'fog':
-        case 'haze':
-            $backgroundImage = 'foggy-bg.jpg';
-            break;
-    }
-}
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,36 +28,39 @@ if ($data) {
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #72c6ef, #004e8f);
+
             margin: 0;
             padding: 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #333;
+            color: #fff;
         }
 
         /* Container for the form */
         .container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            background-image: url('<?php echo $backgroundImage; ?>');
+         
+            /* text-align: center;
+            background-image: url('weather3.jpg');
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-
+            background-position: center; */
+            /* background-attachment: fixed; */
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            text-align: center;
         }
 
 
         /* Heading */
         h2 {
-            color: #72c6ef;
-            font-size: 30px;
+            color: #004e8f;
+
+            font-size: 32px;
             margin-bottom: 20px;
         }
 
@@ -96,11 +68,15 @@ if ($data) {
         input[type="text"],
         [type="email"] {
             width: 80%;
-            padding: 10px;
             margin: 10px 0;
-            border: 2px solid #ddd;
+            color: #000;
+            border: 2px solid rgb(20, 128, 24);
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 18px;
+            background: transparent;
+            flex: 1;
+            padding: 12px 15px;
+            outline: none;
         }
 
         /* Button styles */
@@ -124,7 +100,7 @@ if ($data) {
         }
 
         .weather-result h3 {
-            color: #333;
+            color: #fff;
         }
 
         .weather-result p {
@@ -151,7 +127,7 @@ if ($data) {
 
             <div class="mb-3">
                 <label for="name"></label>
-                <input type="text" id="name" name="name" placeholder="Enter your Name" required>
+                <input type="text" id="name" name="name" placeholder="Enter your Name" >
             </div>
 
             <div class="mb-3">

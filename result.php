@@ -30,18 +30,24 @@ include 'function.php';
     }
 
     .container {
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        width: 90%;
+        background-color: #72c6ef;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        width: 100%;
         max-width: 500px;
-        padding: 30px;
         text-align: center;
+        background-image: url('<?php echo $backgroundImage; ?>');
+        
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
     }
 
     h1 {
         margin-top: 0;
-        color: #004e8f;
+        color: #fff;
     }
 
     .search-box {
@@ -49,14 +55,14 @@ include 'function.php';
         display: flex;
     }
 
-    input[type="text"] {
+    /* input[type="text"] {
         flex: 1;
         padding: 12px 15px;
         border: 2px solid #ddd;
         border-radius: 25px 0 0 25px;
         font-size: 16px;
         outline: none;
-    }
+    } */
 
     button {
         padding: 12px 20px;
@@ -80,12 +86,14 @@ include 'function.php';
     }
 
     .city-name {
+        color: #fff;
         font-size: 28px;
         font-weight: bold;
         margin-bottom: 10px;
     }
 
     .temperature {
+        color: #fff;
         font-size: 72px;
         font-weight: bold;
         margin: 20px 0;
@@ -103,6 +111,9 @@ include 'function.php';
         font-size: 20px;
         text-transform: capitalize;
         margin-bottom: 20px;
+        color: #fff;
+        font-weight: bold;
+
     }
 
     .weather-icon {
@@ -116,10 +127,13 @@ include 'function.php';
         margin-top: 30px;
         padding-top: 20px;
         border-top: 1px solid #eee;
+
     }
 
     .detail-item {
         text-align: center;
+        color: #fff;
+
     }
 
     .detail-value {
@@ -128,8 +142,9 @@ include 'function.php';
     }
 
     .detail-label {
-        font-size: 14px;
-        color: #666;
+        font-size: 20px;
+        color: #fff;
+        font-weight: bold;
     }
 
     .error {
@@ -156,7 +171,7 @@ include 'function.php';
 
         <div class="weather-info">
 
-            <div class="city-name"><?php echo $city . ', ' . $country ?></div>
+            <div class="city-name text-capitalize"><?php echo $city . ', ' . $country ?></div>
 
             <div class="temperature"><?php echo $temp ?></div>
 
@@ -167,15 +182,19 @@ include 'function.php';
             <div class="details">
                 <div class="detail-item">
                     <div class="detail-value"><?php echo $humidity ?>%</div>
-                    <div class="detail-label">Humidity</div>
+                    <div class="detail-label">Humidity 💧</div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-value"><?php echo $wind ?> m/s</div>
-                    <div class="detail-label">Wind</div>
+                    <div class="detail-label">Wind 💨</div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-value"><?php echo $pressure ?> hPa</div>
-                    <div class="detail-label">Pressure</div>
+                    <div class="detail-value"><?php echo $feels_like ?>℃</div>
+                    <div class="detail-label">Feels Like</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-value"><?php echo $feels_like ?>℃</div>
+                    <div class="detail-label">Feels Like</div>
                 </div>
             </div>
 

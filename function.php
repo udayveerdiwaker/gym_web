@@ -6,13 +6,13 @@ $city = isset($_POST["city"]) ? $_POST["city"] : "rishikesh";
 // print_r($city);
 
 if (!empty($city)) {
-    $url = "https://api.openweathermap.org/data/2.5/weather?q={$city}&appid=$apiKey&units=metric";
+    $url = "https://api.openweathermap.org/data/2.5/weather?q=" . urlencode($city) . "&appid=$apiKey&units=metric";
 
     $resp = @file_get_contents($url);
     $data = json_decode($resp, true);
-    echo "<pre>";
-    print_r($data);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($data);
+    // echo "</pre>";
 
     if ($resp) {
         $temp = $data["main"]["temp"];
@@ -24,10 +24,11 @@ if (!empty($city)) {
         $country = $data["sys"]["country"];
         $sunrise = $data["sys"]["sunrise"];
         $sunset = $data["sys"]["sunset"];
+        $weather = $data['weather'][0]['main'];
         $icon = $data['weather'][0]['icon'];
         $pressure = $data['main']['pressure'];
     } else {
-        $temp = "<div class='alert alert-danger' role='alert'>Weather data is not availble for <b>$city</b></div>";
+        $temp = "Weather data is not availble for <b>$city</b>";
     }
 
 
@@ -40,15 +41,42 @@ if (!empty($city)) {
         $check =  mysqli_query($conn, $sql);
 
         if ($check) {
-            $message = "<p class='text-capitalize'>thank you <b>Mr. $name </b> and this is your city <b>$city</b></p>";
+            $message = "<p class='text-capitalize'>Thank you <b>Mr. $name</b>, and this is your city <b>$city</b></p>";
         } else {
-            $message = "<div class='alert alert-danger'>Name and City not available</p>";
+            $message = "Error saving data. Please try again.";
         }
+        // $check->close();
     }
 } else {
-    $temp = '<div class="alert alert-danger" role="alert">
-            City is not available
-            </div>';
+    $temp = 'City is not available';
 }
+if (isset($data)) {
+    $weatherMain = $weather;
 
-// Set default background
+    switch ($weather) {
+        case 'Clear':
+            $backgroundImage = 'clear.jpg';
+            break;
+        case 'Rain':
+        case 'Drizzle':
+            $backgroundImage = 'rainy.jpg';
+            break;
+        case 'Clouds':
+            $backgroundImage = 'cloud.jpg';
+            break;
+        case 'Snow':
+            $backgroundImage = 'snow.jpg';
+            break;
+        case 'Thunderstorm':
+            $backgroundImage = 'thunderstorm.jpg';
+            break;
+        case 'Mist':
+        case 'Fog':
+        case 'Haze':
+            $backgroundImage = 'foggy.jpg';
+            break;
+        default:
+            $backgroundImage = 'clear.jpg';
+            break;
+    }
+}
