@@ -35,17 +35,27 @@ include "function.php";
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #fff;
+            /* color: #fff; */
         }
 
         /* Container for the form */
         .container {
-         
+
             /* text-align: center;
             background-image: url('weather3.jpg');
             background-size: cover;
             background-position: center; */
             /* background-attachment: fixed; */
+            /* background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            text-align: center; */
+        }
+
+        .container {
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -53,6 +63,40 @@ include "function.php";
             max-width: 500px;
             padding: 30px;
             text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #004e8f;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+            display: flex;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 25px 0 0 25px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #004e8f;
+            color: white;
+            border: none;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #003366;
         }
 
 
@@ -65,7 +109,7 @@ include "function.php";
         }
 
         /* Input field styles */
-        input[type="text"],
+        /* input[type="text"],
         [type="email"] {
             width: 80%;
             margin: 10px 0;
@@ -77,10 +121,10 @@ include "function.php";
             flex: 1;
             padding: 12px 15px;
             outline: none;
-        }
+        } */
 
         /* Button styles */
-        button {
+        /* button {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -92,7 +136,7 @@ include "function.php";
 
         button:hover {
             background-color: #45a049;
-        }
+        } */
 
         /* Weather result styles */
         .weather-result {
@@ -119,6 +163,17 @@ include "function.php";
 
 <body>
     <div class="container">
+        <h1>Weather Forecast</h1>
+        
+            <form action="result.php" method="post">
+                <div class="search-box">
+                    <input type="text" name="city" placeholder="Enter city name" value="">
+                    <button type="submit" name="weather ">Search</button>
+                </div>
+            </form>
+    </div>
+
+<!-- <div class="container">
         <h2 class="text-center fw-bold">Get Weather Information</h2>
         <?php if (isset($message)) {
             echo "<div class='alert alert-info'>$message</div>";
@@ -127,7 +182,7 @@ include "function.php";
 
             <div class="mb-3">
                 <label for="name"></label>
-                <input type="text" id="name" name="name" placeholder="Enter your Name" >
+                <input type="text" id="name" name="name" placeholder="Enter your Name">
             </div>
 
             <div class="mb-3">
@@ -142,70 +197,9 @@ include "function.php";
             <button type="submit" name="weather" class="w-100">Get Weather</button>
         </form>
 
-    </div>
-
-
-    <!-- <div class="container mt-3 bg-light p-3">
-        <h2 class="text-center">Weather Info</h2>
-        <?php if (isset($message)) {
-            echo "<div class='alert alert-info'>$message</div>";
-        } ?>
-        <form method="POST" action="">
-
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
-            </div>
-            <div class="mb-3">
-                <label for="city" class="form-label">Enter City Name</label>
-                <input type="text" class="form-control" id="city" name="city">
-            </div>
-            <button type="submit" name="weather" class="btn btn-primary w-100">Get Weather</button>
-        </form>
-        <p class="text-center mt-4 text-capitalize fs-4"><strong>
-                <?php
-                // echo "Weather in your city <b>$city </b>  .<br>";
-                // echo "<p>🌡️  Tamprature : <b>$temp ℃</b> </p>";
-                // echo "<p>💨 Speed  : <b>$wind M/S</b></p>";
-                // echo "<p>💧  Humidity  : <b>$humidity%</b></p>";
-                // echo "<p>🌤️ Description : <b>$des</b></p>";
-                // echo "<p>Country : <b>$country</b></p>";
-                // echo "<p>Timezone : <b>" . date("h:i:s A", $timezone) . "</b></p>";
-                // echo "<p>Sunrise Time : <b>" . date("d-m-Y H:i:s", $sunrise) . "</b></p>";
-                // echo "<p>Sunset Time : <b>" . date("d-m-Y H:i:s", $sunset) . "</b></p>";
-                // echo "Sunrise Time: " . date("Y-m-d H:i:s", $sunrise) . "\n";
-                // Converts the timestamp to a human-readable format
-                // echo "Sunset Time: " . date("Y-m-d H:i:s", $sunset) . "\n";
-                ?>
-            </strong></p>
     </div> -->
-    <!-- <section class="vh-100" style="background-color: #f5f6f7;">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-md-10 col-lg-8 col-xl-6">
 
-                    <div class="card bg-dark text-white" style="border-radius: 40px;">
-                        <div class="bg-image" style="border-radius: 35px;">
-                            <img src="foad.jpg"
-                                class="card-img" alt="weather" />
-                            <div class="mask" style="background-color: rgba(190, 216, 232, .5);"></div>
-                        </div>
-                        <div class="card-img-overlay text-white p-5">
-                            <h4 class="mb-0">Juneau, Alaska, US</h4>
-                            <p class="display-2 my-3">1.28°C</p>
-                            <p class="mb-2">Feels Like: <strong>-1.08 °C</strong></p>
-                            <h5>Snowy</h5>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
-        </div>
-    </section> -->
 </body>
 
 </html>

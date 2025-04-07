@@ -20,13 +20,22 @@ if (!empty($city)) {
         $wind = $data["wind"]["speed"];
         $humidity = $data["main"]["humidity"];
         $feels_like = $data["main"]["feels_like"];
-        $timezone =  $data["timezone"];
+        $timezone_offset = $data["timezone"]; // in seconds
         $country = $data["sys"]["country"];
         $sunrise = $data["sys"]["sunrise"];
         $sunset = $data["sys"]["sunset"];
         $weather = $data['weather'][0]['main'];
         $icon = $data['weather'][0]['icon'];
         $pressure = $data['main']['pressure'];
+
+        // Convert sunrise time
+        $sunrise_time = gmdate("H:i:s", $sunrise + $timezone_offset);
+
+        // Convert sunset time
+        $sunset_time = gmdate("H:i:s", $sunset + $timezone_offset);
+
+        // Get current time in city
+        $current_time = gmdate("Y-m-d H:i:sa", time() + $timezone_offset);
     } else {
         $temp = "Weather data is not availble for <b>$city</b>";
     }
