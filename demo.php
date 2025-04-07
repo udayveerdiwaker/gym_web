@@ -39,21 +39,21 @@ include "function.php";
         }
 
         /* Container for the form */
-        .container {
+        /* .container {
 
-            /* text-align: center;
+            text-align: center;
             background-image: url('weather3.jpg');
             background-size: cover;
-            background-position: center; */
-            /* background-attachment: fixed; */
-            /* background-color: rgba(255, 255, 255, 0.9);
+            background-position: center;
+            background-attachment: fixed;
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 500px;
             padding: 30px;
-            text-align: center; */
-        }
+            text-align: center;
+        } */
 
         .container {
             background-color: rgba(255, 255, 255, 0.9);
@@ -138,42 +138,23 @@ include "function.php";
             background-color: #45a049;
         } */
 
-        /* Weather result styles */
-        .weather-result {
-            margin-top: 20px;
-        }
-
-        .weather-result h3 {
-            color: #fff;
-        }
-
-        .weather-result p {
-            font-size: 18px;
-            color: #555;
-        }
-
-        /* Error message styling */
-        .error-message {
-            color: red;
-            font-size: 18px;
-            margin-top: 10px;
-        }
+      
     </style>
 </head>
 
 <body>
     <div class="container">
         <h1>Weather Forecast</h1>
-        
-            <form action="result.php" method="post">
-                <div class="search-box">
-                    <input type="text" name="city" placeholder="Enter city name" value="">
-                    <button type="submit" name="weather ">Search</button>
-                </div>
-            </form>
+
+        <form action="result.php" method="post">
+            <div class="search-box">
+                <input type="text" name="city" placeholder="Enter city name" value="">
+                <button type="submit" name="weather ">Search</button>
+            </div>
+        </form>
     </div>
 
-<!-- <div class="container">
+    <!-- <div class="container">
         <h2 class="text-center fw-bold">Get Weather Information</h2>
         <?php if (isset($message)) {
             echo "<div class='alert alert-info'>$message</div>";

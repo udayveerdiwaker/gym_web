@@ -150,9 +150,9 @@ include 'function.php';
     .error {
         color: #d32f2f;
         font-weight: bold;
-        padding: 15px;
-        background-color: #ffebee;
-        border-radius: 5px;
+        /* padding: 15px; */
+        /* background-color: #ffebee; */
+        /* border-radius: 5px; */
     }
 </style>
 
@@ -161,9 +161,11 @@ include 'function.php';
 
     <div class="container">
         <h1>Weather Forecast</h1>
-        <!-- <?php if ($message) { ?>
+        <?php if ($message) { ?>
             <div class="error"><?php echo $message; ?></div>
-        <?php } ?> -->
+            <!-- <div class="error"><?php echo $temp; ?></div> -->
+
+        <?php } ?>
         <!-- <form method="GET" action="">
             <div class="search-box">
                 <input type="text" name="city" placeholder="Enter city name" value="<?php echo $city; ?>">
@@ -180,9 +182,9 @@ include 'function.php';
             <img class="weather-icon" src="https://openweathermap.org/img/wn/<?php echo $icon ?>@2x.png" alt="<?php echo $des ?>">
 
             <div class="weather-description"><?php echo $des ?></div>
-            <div class="weather-description">Local Time: <?php echo $current_time ?></div>
-            <div class="weather-description">Local Time: <?php echo $sunrise_time ?></div>
-            <div class="weather-description">Local Time: <?php echo $sunset_time ?></div>
+            <div class="weather-description">Current Time: <?php echo $current_time ?></div>
+            <div class="weather-description">Sunrise Time: <?php echo $sunrise_time ?></div>
+            <div class="weather-description">Sunrise Time: <?php echo $sunset_time ?></div>
 
             <div class="details">
                 <div class="detail-item">
@@ -202,7 +204,7 @@ include 'function.php';
 
         </div>
         <a href="demo.php">
-            <button type="submit" name="weather" class="w-100 mt-4">Back to form</button></a>
+            <button type="submit" name="weather" class="w-100 mt-4">Back to Weather Form</button></a>
 
     </div>
 

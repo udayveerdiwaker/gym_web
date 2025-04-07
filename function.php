@@ -28,13 +28,10 @@ if (!empty($city)) {
         $icon = $data['weather'][0]['icon'];
         $pressure = $data['main']['pressure'];
 
-        // Convert sunrise time
         $sunrise_time = gmdate("H:i:s", $sunrise + $timezone_offset);
 
-        // Convert sunset time
         $sunset_time = gmdate("H:i:s", $sunset + $timezone_offset);
 
-        // Get current time in city
         $current_time = gmdate("Y-m-d H:i:sa", time() + $timezone_offset);
     } else {
         $temp = "Weather data is not availble for <b>$city</b>";
@@ -42,15 +39,17 @@ if (!empty($city)) {
 
 
     if (isset($_POST["weather"])) {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
+        // $name = $_POST['name'];
+        // $email = $_POST['email'];
         $city = $_POST['city'];
 
-        $sql = "INSERT INTO `demo`(`name`, `email`, `city`, `temp`, `desc`, `wind`, `humidity`) VALUES ('$name', '$email','$city','$temp', '$des', '$wind', '$humidity')";
+        // $sql = "INSERT INTO `demo`(`name`, `email`, `city`, `temp`, `desc`, `wind`, `humidity`) VALUES ('$name', '$email','$city','$temp', '$des', '$wind', '$humidity')";
+        $sql = "INSERT INTO `demo`(`city`) VALUES ('$city')";
+
         $check =  mysqli_query($conn, $sql);
 
         if ($check) {
-            $message = "<p class='text-capitalize'>Thank you <b>Mr. $name</b>, and this is your city <b>$city</b></p>";
+            $message = "<p class='text-capitalize'>Thank you and this is your city <b>$city</b></p>";
         } else {
             $message = "Error saving data. Please try again.";
         }
@@ -60,7 +59,7 @@ if (!empty($city)) {
     $temp = 'City is not available';
 }
 if (isset($data)) {
-    $weatherMain = $weather;
+    // $weatherMain = $weather;
 
     switch ($weather) {
         case 'Clear':
