@@ -4,63 +4,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Navbar</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Gym Admin - Login</title>
     <style>
-        .navbar {
-            background-color: #222;
-            /* Dark background */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --success: #2ecc71;
         }
 
-        .navbar-brand,
-        .nav-link {
-            color: #fff !important;
-            font-weight: bold;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .nav-link:hover {
-            color: #f39c12 !important;
-            /* Orange hover effect */
+        body {
+            background-color: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), url('gym-background.jpg'));
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: #7f8c8d;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .login-form input:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .forgot-password a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #7f8c8d;
+        }
+
+        .login-footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 1.5rem;
+            }
+
+            .login-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .remember-forgot {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .forgot-password {
+                margin-top: 0.5rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- <button onclick="getWeather()">Get Weather</button>
-    <p id="weatherResult"></p> -->
-
-    <script>
-        // async function getWeather() {
-        //     const apiKey = "95a72c423b3e3a08ea34b3a74018e275"; // Replace with your API key
-        //     const city = "haridwar";
-        //     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-
-        //     try {
-        //         const response = await fetch(url);
-        //         const data = await response.json();
-        //         document.getElementById("weatherResult").innerText = `Temperature: ${data.main.temp}°C`;
-        //     } catch (error) {
-        //         console.error("Error fetching data", error);
-        //     }
-        // }
-    </script>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">GymName</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item nav-link btn btn-warning text-dark ms-2"><a class="nav-link" href="#"></a></li>
-
-                </ul>
-            </div>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Gym Admin Panel</h1>
+            <p>Please sign in to continue</p>
         </div>
-    </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <form class="login-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+            </div>
 
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+
+        <div class="login-footer">
+            <p>Don't have an account? <a href="#">Contact administrator</a></p>
+        </div>
+    </div>
 </body>
 
 </html>

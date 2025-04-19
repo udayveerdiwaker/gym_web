@@ -24,6 +24,7 @@ body {
     --bg-input: #f8f9fa;
 }
 
+
 .text_red {
     color: var(--all-red);
 }
@@ -78,13 +79,13 @@ section {
     z-index: 0;
 }
 
+/* 
 .container-fluid.page-header {
     width: 100%;
     background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .8)), url(bg.jpg);
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
-    /* You can change the background color */
     position: relative;
     overflow: hidden;
 }
@@ -99,7 +100,6 @@ section {
 
 h4.display-4 {
     font-size: 2.5rem;
-    /* Adjust the font size as needed */
     color: var(--text-white);
     font-weight: bold;
     text-transform: uppercase;
@@ -134,7 +134,7 @@ h4.display-4 {
 
 .font-weight-bold {
     font-weight: bold;
-}
+} */
 
 /* .home {
     height: 100vh;
@@ -155,101 +155,178 @@ h4.display-4 {
     background: url('foad.jpg') no-repeat center center/cover;
 
 } */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* Base section styling */
+body {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+:root {
+    --all-red: #e31c25;
+    --hover-red: #c00912;
+    --btn-color: #ff4d4d;
+    --text-gray: #343a40;
+    --bg-black: #111;
+    --text-black: #222;
+    --text-white: #fff;
+    --hover-white: #fff;
+    --bg-white: #fff;
+    --border-color: #ccc;
+    --bg-input: #f8f9fa;
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hero Section */
 #home {
-    background-color: var(--bg-black);
-    /* opacity: 0.9; */
-    padding: 100px 20px;
-    height: 100vh;
+    position: relative;
+    min-height: 100vh;
     display: flex;
+    align-items: center;
     justify-content: center;
     text-align: center;
-    position: relative;
+    overflow: hidden;
+    background: url('foad.jpg') no-repeat center center/cover;
+    animation: fadeIn 2s ease-out;
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+    transition: opacity 1s ease;
+}
+
+#home:hover::before {
+    opacity: 0.6;
 }
 
 #home .container {
-    margin-top: 100px;
     position: relative;
     z-index: 1;
-    color: white;
+    transform: translateY(0);
+    transition: transform 1s ease;
+    padding: 20px;
 }
 
-
-
-/* Button Styling */
-.btn_Explore {
-    padding: 10px 20px;
-    border-radius: 0;
-    font-size: 1rem;
-    border: 2px solid var(--text-white);
-    color: var(--text-white);
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
+#home h1 {
+    font-size: 4rem;
+    text-shadow: 2px 2px 10px var(--text-black);
+    animation: slideUp 1s ease-out 0.3s both;
 }
 
-.btn_Explore:hover {
-    background-color: var(--all-red);
-    color: var(--text-white);
+#home p {
+    color: var(--all-red);
+    text-shadow: 1px 1px 3px #ffffff;
+    animation: slideUp 1s ease-out 0.2s both;
 }
 
+/* Cards Section */
 .body_cards {
-    height: 60vh;
-    background-color: #f7f7f7;
+    padding: 0;
+    /* background-color: #f7f7f7; */
+    position: relative;
+    z-index: 2;
 }
 
-.body_cards .container {
+.body_cards .row {
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .body_cards .card {
-    margin-top: -110px;
+    margin-top: -100px;
     border: none;
+    padding-bottom: 100px;
     border-radius: 0;
-    transition: transform 0.2s ease-in-out;
     overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
 }
 
-.body_cards .card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-
-    /* transform: translateY(-5px); */
+.body_cards .card:last-child {
+    animation-delay: 0.6s;
 }
 
-.body_cards .body-end {
+/* .body_cards .card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+} */
+
+.body-end {
     padding: 35px;
     background-color: var(--all-red);
 }
 
-.body_cards .body-start {
+.body-start {
     padding: 35px;
     background-color: var(--bg-black);
 }
 
-.body_cards .card-title {
+.card-title {
     font-size: 3rem;
     font-weight: bold;
     color: var(--text-white);
     margin-bottom: 10px;
+    transition: transform 0.3s ease;
 }
 
-.body_cards .card-text {
+.card:hover .card-title {
+    transform: scale(1.05);
+}
+
+.card-text {
     font-size: 15px;
     line-height: 1.6;
     color: var(--text-white);
+    transition: all 0.3s ease;
 }
 
+.card:hover .card-text {
+    letter-spacing: 0.2px;
+}
 
-.btn_Join {
-    padding: 10px 20px;
+/* Buttons */
+.btn {
+    padding: 10px 10px;
     border-radius: 0;
     font-size: 1rem;
-    width: 120px;
     border: 2px solid var(--text-white);
     color: var(--text-white);
     text-decoration: none;
-    transition: background-color 0.1s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    cursor: pointer;
+    animation: fadeIn 1s ease-out 0.8s both;
+}
+
+.btn:hover {
+    color: var(--text-white);
+    /* transform: translateY(-3px); */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn_Explore:hover {
+    background-color: var(--all-red);
+    border-color: var(--all-red);
 }
 
 .btn_Join:hover {
@@ -257,7 +334,66 @@ h4.display-4 {
     color: var(--text-gray);
 }
 
-.text-primary {
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    #home h1 {
+        font-size: 3rem;
+    }
+
+    .card-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #home h1 {
+        font-size: 2.5rem;
+    }
+
+    .body_cards .card {
+        margin-top: -70px;
+    }
+
+    .card-title {
+        font-size: 2rem;
+    }
+
+    .card-text {
+        font-size: 14px;
+    }
+}
+
+.body_cards .c .text-primary {
     color: rgb(227, 28, 37) !important;
 }
 
@@ -1031,6 +1167,12 @@ div {
     color: #ffffff;
 }
 
+.subscribe {
+    border-radius: 0px 10px 10px 0px;
+    height: 55px;
+
+}
+
 .footer .alert {
     margin-top: 15px;
 }
@@ -1119,6 +1261,7 @@ div {
     color: #fff;
 
 }
+
 
 /* Responsive styling */
 

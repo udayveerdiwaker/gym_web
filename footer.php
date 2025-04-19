@@ -70,7 +70,7 @@ include 'config.php';
                     <div class="input-group">
                         <input type="email" class="form-control border border-danger border-2" placeholder="Enter your email" name="email" required>
                         <div class="input-group-append">
-                            <button class="hbtn btn btn-outline-danger text-white">Subscribe</button>
+                            <button class="hbtn btn btn-outline-danger text-white subscribe">Subscribe</button>
                         </div>
                     </div>
                 </form>
