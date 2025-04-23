@@ -161,11 +161,11 @@ include 'function.php';
 
     <div class="container">
         <h1>Weather Forecast</h1>
-        <?php if ($message) { ?>
+        <!-- <?php if ($temp) { ?>
             <div class="error"><?php echo $message; ?></div>
-            <!-- <div class="error"><?php echo $temp; ?></div> -->
+            <div class="error"><?php echo $temp; ?></div>
 
-        <?php } ?>
+        <?php } ?> -->
         <!-- <form method="GET" action="">
             <div class="search-box">
                 <input type="text" name="city" placeholder="Enter city name" value="<?php echo $city; ?>">
@@ -203,7 +203,7 @@ include 'function.php';
             </div>
 
         </div>
-        <a href="demo.php">
+        <a href="weather.php">
             <button type="submit" name="weather" class="w-100 mt-4">Back to Weather Form</button></a>
 
     </div>
