@@ -4,7 +4,7 @@ include 'config.php';
 if (isset($_POST['register'])) {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = $_POST['password'];
 
     $sql = "INSERT INTO `users` (`username`, `email`, `password`) VALUES ('$username','$email', '$password')";
     $check = mysqli_query($conn, $sql);
