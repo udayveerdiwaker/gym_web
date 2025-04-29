@@ -4,7 +4,10 @@ if (isset($_POST['update'])) {
     $id = $_POST['id'];
     $title = $_POST['title'];
     $content = $_POST['content'];
-    $conn->query("UPDATE pages SET title='$title', content='$content' WHERE id=$id");
+    // $conn->query("UPDATE pages SET title='$title', content='$content' WHERE id=$id");
+    $sql = "UPDATE pages SET title='$title', content='$content' WHERE id=$id";
+    mysqli_query($conn, $sql);
+
     header('Location: pages_table.php');
 }
 ?>
