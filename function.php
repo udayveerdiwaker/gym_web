@@ -14,7 +14,7 @@ if (!empty($city)) {
     // print_r($data);
     // echo "</pre>";
 
-    if ($resp) {
+    if ($data) {
         $temp = $data["main"]["temp"];
         $des = $data["weather"][0]["description"];
         $wind = $data["wind"]["speed"];
