@@ -1,18 +1,26 @@
+<?php
+include 'config.php'; // Ensure this connects to your DB
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="index.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="admin_panel.css">
     <title>Gym Admin Dashboard</title>
-
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-header">
             <i class="fas fa-dumbbell"></i>
@@ -24,13 +32,20 @@
         <div class="sidebar-menu">
             <h4>Main</h4>
             <ul>
-                <li class="active">
-                    <a href="#">
+                <li class="">
+                    <a href="dashboard.php">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
+                    <a href="pages_table.php">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Pages</span>
+                    </a>
+                </li>
+                <li>
+
                     <a href="#">
                         <i class="fas fa-users"></i>
                         <span>Members</span>
@@ -106,135 +121,7 @@
 
         </div>
 
-        <!-- Content -->
-        <div class="content">
-            <div class="page-header">
-                <h2>Dashboard</h2>
-                <ul class="breadcrumb">
-                    <li><a href="admin_panel.php">Home</a></li>
-                    <li>Dashboard</li>
-                </ul>
-            </div>
 
-            <div class="cards">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Total Members</h3>
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="card-body">
-                        <h2>1,254</h2>
-                        <div class="card-footer">
-                            <span>+12%</span> from last month
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Active Members</h3>
-                        <i class="fas fa-user-check"></i>
-                    </div>
-                    <div class="card-body">
-                        <h2>872</h2>
-                        <div class="card-footer">
-                            <span>+8%</span> from last month
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Monthly Revenue</h3>
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <div class="card-body">
-                        <h2>$24,560</h2>
-                        <div class="card-footer">
-                            <span>+15%</span> from last month
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Upcoming Classes</h3>
-                        <i class="fas fa-calendar"></i>
-                    </div>
-                    <div class="card-body">
-                        <h2>14</h2>
-                        <div class="card-footer">
-                            <span>Today</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Member ID</th>
-                            <th>Name</th>
-                            <th>Membership</th>
-                            <th>Join Date</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#GYM001</td>
-                            <td>John Smith</td>
-                            <td>Premium</td>
-                            <td>Jan 12, 2023</td>
-                            <td><span class="badge badge-success">Active</span></td>
-                            <td><button class="logout-btn"><i class="fas fa-eye"></i> View</button></td>
-                        </tr>
-                        <tr>
-                            <td>#GYM002</td>
-                            <td>Sarah Johnson</td>
-                            <td>Standard</td>
-                            <td>Feb 5, 2023</td>
-                            <td><span class="badge badge-success">Active</span></td>
-                            <td><button class="logout-btn"><i class="fas fa-eye"></i> View</button></td>
-                        </tr>
-                        <tr>
-                            <td>#GYM003</td>
-                            <td>Michael Brown</td>
-                            <td>Premium</td>
-                            <td>Mar 18, 2023</td>
-                            <td><span class="badge badge-warning">Pending</span></td>
-                            <td><button class="logout-btn"><i class="fas fa-eye"></i> View</button></td>
-                        </tr>
-                        <tr>
-                            <td>#GYM004</td>
-                            <td>Emily Davis</td>
-                            <td>Basic</td>
-                            <td>Apr 2, 2023</td>
-                            <td><span class="badge badge-danger">Expired</span></td>
-                            <td><button class="logout-btn"><i class="fas fa-eye"></i> View</button></td>
-                        </tr>
-                        <tr>
-                            <td>#GYM005</td>
-                            <td>Robert Wilson</td>
-                            <td>Standard</td>
-                            <td>Apr 15, 2023</td>
-                            <td><span class="badge badge-success">Active</span></td>
-                            <td><button class="logout-btn"><i class="fas fa-eye"></i> View</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Toggle sidebar on mobile
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.sidebar').classList.toggle('active');
-        });
-    </script>
 </body>
 
 </html>

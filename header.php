@@ -1,10 +1,10 @@
 <?php
 // index.php - Dynamic Page Rendering
 include 'config.php';
-$slug = isset($_GET['page']) ? $_GET['page'] : '';
-$result = $conn->query("SELECT * FROM pages WHERE slug='$slug'");
-$allPages = $conn->query("SELECT * FROM pages");
-
+// $allPages = $conn->query("SELECT * FROM pages");
+$Pages = "SELECT * FROM `pages`";
+$check = mysqli_query($conn, "$Pages");
+$page_name = mysqli_fetch_all($check, MYSQLI_ASSOC);
 ?>
 
 <!doctype html>
@@ -39,9 +39,9 @@ $allPages = $conn->query("SELECT * FROM pages");
                         <li class="nav-item">
                             <a class="nav-link" href="home.php">Home</a>
                         </li>
-                        <?php foreach ($allPages as $page) { ?>
+                        <?php foreach ($page_name as $allpage) { ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php?page=<?php echo $page['slug']; ?>"><?php echo $page['title']; ?></a>
+                                <a class="nav-link" href="index.php?page=<?php echo $allpage['slug']; ?>"><?php echo $allpage['title']; ?></a>
                             </li>
                         <?php } ?>
                     </ul>

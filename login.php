@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
         $stmt->fetch();
         if ($password) {
             $_SESSION['user_id'] = $id;
-            header("Location: admin.php");
+            header("Location: admin_panel.php");
             exit();
         } else {
             $error = "Invalid credentials.";

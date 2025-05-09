@@ -1,43 +1,51 @@
 <?php
-// include 'admin_panel.php';
-
-// if (isset($_POST['update'])) {
-//     $id = $_POST['id'];
-//     $title = $_POST['title'];
-//     $content = $_POST['content'];
-//     // $conn->query("UPDATE pages SET title='$title', content='$content' WHERE id=$id");
-//     $sql = "UPDATE pages SET title='$title', content='$content' WHERE id=$id";
-//     mysqli_query($conn, $sql);
-
-//     header('Location: pages_table.php');
-// }
-?>
-
-<!-- <?php
-        //  if (isset($_GET['edit'])) {
-        //             $id = $_GET['edit'];
-        //             $page = $conn->query("SELECT * FROM pages WHERE id=$id")->fetch_assoc();
-        ?>
-    <div class="container">
-        <h2 class="mt-4">Edit Page</h2>
-        <form method='POST'>
-            <input type='hidden' name='id' value='<?php echo $page['id']; ?>'>
-            <input type='text' name='title' value='<?php echo $page['title']; ?>' class="form-control" required>
-            <textarea name='content' class="form-control mt-2" required><?php echo $page['content']; ?></textarea>
-            <button type='submit' name='update' class="btn btn-primary mt-2">Update Page</button>
-        </form>
-    <?php
-    //  }
-    ?>
-    </div> -->
-
-
-<?php
 include 'admin_panel.php';
 
-    $id = $_POST['id'];
+if (isset($_POST['update'])) {
+    $title = $_POST['title'];
+    $badge_text = $_POST['badge_text'];
+    $highlight_years = $_POST['highlight_years'];
+    $description = $_POST['description'];
+
+    $feature1_icon = $_POST['feature1_icon'];
+    $feature1_title = $_POST['feature1_title'];
+    $feature1_desc = $_POST['feature1_desc'];
+
+    $feature2_icon = $_POST['feature2_icon'];
+    $feature2_title = $_POST['feature2_title'];
+    $feature2_desc = $_POST['feature2_desc'];
+    $id = $_GET['id'];
+    // Handle image
+    if ($_FILES['image']['name'] != '') {
+        $image = $_FILES['image']['name'];
+        $tmp = $_FILES['image']['tmp_name'];
+        move_uploaded_file($tmp, "../uploads/$image");
+
+        $query = "UPDATE pages SET 
+            title='$title', badge_text='$badge_text', highlight_years='$highlight_years', 
+            description='$description', image='$image', 
+            feature1_icon='$feature1_icon', feature1_title='$feature1_title', feature1_desc='$feature1_desc',
+            feature2_icon='$feature2_icon', feature2_title='$feature2_title', feature2_desc='$feature2_desc' 
+            WHERE id=$id";
+    } else {
+        $query = "UPDATE pages SET 
+            title='$title', badge_text='$badge_text', highlight_years='$highlight_years', 
+            description='$description', 
+            feature1_icon='$feature1_icon', feature1_title='$feature1_title', feature1_desc='$feature1_desc',
+            feature2_icon='$feature2_icon', feature2_title='$feature2_title', feature2_desc='$feature2_desc' 
+            WHERE id=$id";
+    }
+
+    mysqli_query($conn, $query);
+    header("Location: about_edit.php");
+}
+
+
 // $page = $_GET['page'];
+$id = $_POST['id'];
 $query = "SELECT * FROM `pages` WHERE id = '$id'";
+
+// $query = "SELECT * FROM `pages` WHERE slug = '$page'";
 $about_edit = mysqli_query($conn, $query);
 $data = mysqli_fetch_assoc($about_edit);
 ?>
