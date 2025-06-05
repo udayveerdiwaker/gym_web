@@ -1,81 +1,114 @@
 <?php
-// include 'admin_panel.php';
+include 'admin_panel.php'; // Must define $conn here
 
-// if (isset($_POST['update'])) {
-//     $id = $_POST['id'];
-//     $title = $_POST['title'];
-//     $content = $_POST['content'];
-//     // $conn->query("UPDATE pages SET title='$title', content='$content' WHERE id=$id");
-//     $sql = "UPDATE pages SET title='$title', content='$content' WHERE id=$id";
-//     mysqli_query($conn, $sql);
+// Handle form submission
+if (isset($_POST['update'])) {
+    $id = intval($_POST['id']);
+    $slug = mysqli_real_escape_string($conn, $_POST['slug']);
+    $title = mysqli_real_escape_string($conn, $_POST['title']);
+    // $content = mysqli_real_escape_string($conn, $_POST['content']);
 
-//     header('Location: pages_table.php');
-// }
+    $sql = "UPDATE pages SET slug='$slug', title='$title' WHERE id=$id";
+    mysqli_query($conn, $sql);
+
+    header('Location: pages_table.php');
+    exit;
+}
 ?>
-
-<!-- <?php
-        //  if (isset($_GET['edit'])) {
-        //             $id = $_GET['edit'];
-        //             $page = $conn->query("SELECT * FROM pages WHERE id=$id")->fetch_assoc();
-        ?>
-    <div class="container">
-        <h2 class="mt-4">Edit Page</h2>
-        <form method='POST'>
-            <input type='hidden' name='id' value='<?php echo $page['id']; ?>'>
-            <input type='text' name='title' value='<?php echo $page['title']; ?>' class="form-control" required>
-            <textarea name='content' class="form-control mt-2" required><?php echo $page['content']; ?></textarea>
-            <button type='submit' name='update' class="btn btn-primary mt-2">Update Page</button>
-        </form>
-    <?php
-    //  }
-    ?>
-    </div> -->
-
 
 <?php
-include 'admin_panel.php';
+if (isset($_GET['edit'])) {
+    $id = intval($_GET['edit']);
+    $page = $conn->query("SELECT * FROM pages WHERE id=$id")->fetch_assoc();
 
-    $id = $_POST['id'];
-// $page = $_GET['page'];
-$query = "SELECT * FROM `pages` WHERE id = '$id'";
-$about_edit = mysqli_query($conn, $query);
-$data = mysqli_fetch_assoc($about_edit);
+    if ($page):
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .page-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="card">
+            <div class="card-body form-container">
+                <div class="page-header">
+                    <h2 class="h4">Edit Page</h2>
+                    <p class="text-muted">Update the page details below</p>
+                </div>
 
-<h2>Edit About Page</h2>
-<form method="post" action="about_update.php" enctype="multipart/form-data">
-    <label>Title</label><br>
-    <input type="text" name="title" value="<?= htmlspecialchars($data['title']) ?>" required><br><br>
+                <form method='POST'>
+                    <input type='hidden' name='id' value='<?php echo $page['id']; ?>'>
 
-    <label>Current Image</label><br>
-    <img src="../uploads/<?= htmlspecialchars($data['image']) ?>" width="150"><br>
-    <label>Change Image</label>
-    <input type="file" name="image"><br><br>
+                    <div class="mb-4">
+                        <label for="title" class="form-label fw-bold">Page Title</label>
+                        <input type='text' name='title' id="title" value='<?php echo htmlspecialchars($page['title']); ?>' 
+                               class="form-control form-control-lg" placeholder="Enter page title" required>
+                        <div class="form-text">This will be displayed as the main heading of your page.</div>
+                    </div>
 
-    <label>Badge Text</label><br>
-    <input type="text" name="badge_text" value="<?= htmlspecialchars($data['badge_text']) ?>"><br><br>
+                    <div class="mb-4">
+                        <label for="slug" class="form-label fw-bold">Page Slug (URL)</label>
+                        <div class="input-group">
+                            <span class="input-group-text">/</span>
+                            <input type='text' name='slug' id="slug" value='<?php echo htmlspecialchars($page['slug']); ?>' 
+                                   class="form-control form-control-lg" placeholder="page-slug" required>
+                        </div>
+                        <div class="form-text">Use lowercase letters, numbers, and hyphens only (e.g., 'about-us').</div>
+                    </div>
 
-    <label>Highlight Years</label><br>
-    <input type="text" name="highlight_years" value="<?= htmlspecialchars($data['highlight_years']) ?>"><br><br>
+                    <!-- Uncomment if you need content field -->
+                    <!--
+                    <div class="mb-4">
+                        <label for="content" class="form-label fw-bold">Content</label>
+                        <textarea name='content' id="content" class="form-control" rows="8" required>
+                            <?php echo htmlspecialchars($page['content']); ?>
+                        </textarea>
+                    </div>
+                    -->
 
-    <label>Description</label><br>
-    <textarea name="description" rows="5"><?= htmlspecialchars($data['description']) ?></textarea><br><br>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                        <a href="pages_table.php" class="btn btn-outline-secondary me-md-2">Cancel</a>
+                        <button type='submit' name='update' class="btn btn-primary px-4">
+                            <i class="bi bi-save"></i> Update Page
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <h4>Feature 1</h4>
-    <label>Icon (e.g., 🏋️)</label><br>
-    <input type="text" name="feature1_icon" value="<?= htmlspecialchars($data['feature1_icon']) ?>"><br>
-    <label>Title</label><br>
-    <input type="text" name="feature1_title" value="<?= htmlspecialchars($data['feature1_title']) ?>"><br>
-    <label>Description</label><br>
-    <textarea name="feature1_desc"><?= htmlspecialchars($data['feature1_desc']) ?></textarea><br><br>
-
-    <h4>Feature 2</h4>
-    <label>Icon (e.g., 🏅)</label><br>
-    <input type="text" name="feature2_icon" value="<?= htmlspecialchars($data['feature2_icon']) ?>"><br>
-    <label>Title</label><br>
-    <input type="text" name="feature2_title" value="<?= htmlspecialchars($data['feature2_title']) ?>"><br>
-    <label>Description</label><br>
-    <textarea name="feature2_desc"><?= htmlspecialchars($data['feature2_desc']) ?></textarea><br><br>
-
-    <button type="submit" name="update">Update</button>
-</form>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<?php
+    else:
+        echo "<div class='container py-5'><div class='alert alert-danger'>Page not found.</div></div>";
+    endif;
+}
+?>

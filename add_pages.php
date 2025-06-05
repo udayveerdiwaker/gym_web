@@ -1,268 +1,98 @@
 <?php
-// admin_panel.php - Admin Panel for Managing Pages with Content and Images
 include 'admin_panel.php';
 
-if (isset($_POST['add'])) {
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    $slug = strtolower(str_replace(' ', '-', $title));
-    $sql = "INSERT INTO pages (title, content, slug) VALUES ('$title', '$content', '$slug')";
-    mysqli_query($conn, $sql);
-    header('Location: dashboard.php');
+$msg = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = trim($_POST['title']);
+    $slug = trim($_POST['slug']);
+
+    // Basic validation
+    if (!empty($title) && !empty($slug)) {
+        $stmt = $conn->prepare("INSERT INTO pages (title, slug) VALUES (?, ?)");
+        $stmt->bind_param("ss", $title, $slug);
+
+        if ($stmt->execute()) {
+            $msg = "<div class='alert alert-success'>Page added successfully!</div>";
+        } else {
+            $msg = "<div class='alert alert-danger'>Error: Could not insert page.</div>";
+        }
+
+        $stmt->close();
+    } else {
+        $msg = "<div class='alert alert-warning'>Both title and slug are required.</div>";
+    }
 }
 ?>
 
-<style>
-    :root {
-        --primary-color: #2a4365;
-        /* Deep athletic blue */
-        --secondary-color: #e53e3e;
-        /* Strong red */
-        --accent-color: #f6ad55;
-        /* Energy orange */
-        --light-color: #f7fafc;
-        --dark-color: #1a202c;
-    }
-
-    body {
-        /* background:
-            url('foad.jpg') no-repeat center center fixed; */
-        background-size: cover;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        min-height: 100vh;
-    }
-
-    .logo {
-        width: 180px;
-        display: block;
-        margin: 30px auto 20px;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    }
-
-    .card {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 12px;
-        border: none;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .card-header {
-        /* background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); */
-        /* color: #fff; */
-        padding: 15px 20px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border-bottom: 3px solid var(--accent-color);
-    }
-
-    .card-body {
-        padding: 30px;
-    }
-
-    .form-label {
-        font-weight: 600;
-        color: var(--dark-color);
-        margin-bottom: 8px;
-        display: block;
-    }
-
-    .form-control {
-        border: 2px solid #e2e8f0;
-        border-radius: 6px;
-        padding: 12px 15px;
-        transition: all 0.3s ease;
-    }
-
-    .form-control:focus {
-        border-color: var(--accent-color);
-        box-shadow: 0 0 0 3px rgba(246, 173, 85, 0.3);
-    }
-
-    textarea.form-control {
-        min-height: 200px;
-    }
-
-    .btn {
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border-radius: 6px;
-        padding: 12px 24px;
-        border: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-success {
-        background-color: #38a169;
-        color: white;
-    }
-
-    .btn-success:hover {
-        background-color: #2f855a;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(56, 161, 105, 0.3);
-    }
-
-    .btn-block {
-        display: block;
-        width: 100%;
-    }
-
-    .container {
-        animation: fadeInUp 0.5s ease-out;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
         }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
-    }
-</style>
-<div class="container py-5">
-
-    <div class="card mt-3">
-        <div class="card-header">
-            <h3 class="mb-0">Create New Page</h3>
-        </div>
-        <div class="card-body">
-            <form method="POST" enctype="multipart/form-data">
-                <div class="mb-4">
-                    <label for="title" class="form-label">Page Title</label>
-                    <input type="text" name="title" id="title" class="form-control" required
-                        placeholder="Enter page title (e.g., 'Workout Plans')">
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .page-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="card">
+            <div class="card-body form-container">
+                <div class="page-header">
+                    <h2 class="h4">Add New Page</h2>
+                    <p class="text-muted">Create a new page for your website</p>
                 </div>
 
-                <div class="mb-4">
-                    <label for="content" class="form-label">Page Content</label>
-                    <textarea name="content" id="content" class="form-control" rows="" required
-                        placeholder="Enter detailed content for this page..."></textarea>
-                </div>
+                <?php echo $msg; ?>
 
+                <form method="POST" action="">
+                    <div class="mb-4">
+                        <label for="title" class="form-label fw-bold">Page Title</label>
+                        <input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="Enter page title" required>
+                        <div class="form-text">This will be displayed as the main heading of your page.</div>
+                    </div>
 
+                    <div class="mb-4">
+                        <label for="slug" class="form-label fw-bold">Page Slug (URL)</label>
+                        <div class="input-group">
+                            <span class="input-group-text">/</span>
+                            <input type="text" name="slug" id="slug" class="form-control form-control-lg" placeholder="page-slug" required>
+                        </div>
+                        <div class="form-text">Use lowercase letters, numbers, and hyphens only (e.g., 'about-us').</div>
+                    </div>
 
-                <div class="d-grid gap-2 mt-5">
-                    <button type="submit" name="add" class="btn btn-success btn-lg">
-                        <i class="fas fa-dumbbell me-2"></i> Create Page
-                    </button>
-                </div>
-            </form>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                        <!-- <button type="reset" class="btn btn-outline-secondary me-md-2">Reset</button> -->
+                        <button type="submit" class="btn btn-primary px-4">
+                            <i class="bi bi-save"></i> Save Page
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-
-<?php
-
-// $msg = "";
-
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//     $stmt = $conn->prepare("INSERT INTO pages 
-//         (slug, title, content, image, badge_text, highlight_years, description, 
-//         feature1_icon, feature1_title, feature1_desc, 
-//         feature2_icon, feature2_title, feature2_desc) 
-//         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-//     $stmt->bind_param("sssssssssssss",
-//         $_POST['slug'], $_POST['title'], $_POST['content'], $_POST['image'],
-//         $_POST['badge_text'], $_POST['highlight_years'], $_POST['description'],
-//         $_POST['feature1_icon'], $_POST['feature1_title'], $_POST['feature1_desc'],
-//         $_POST['feature2_icon'], $_POST['feature2_title'], $_POST['feature2_desc']
-//     );
-
-//     if ($stmt->execute()) {
-//         $msg = '<div class="alert alert-success">✅ Page added successfully.</div>';
-//     } else {
-//         $msg = '<div class="alert alert-danger">❌ Error: ' . $stmt->error . '</div>';
-//     }
-
-//     $stmt->close();
-// }
-?>
-<!-- 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-<div class="container mt-5">
-    <h2 class="mb-4">Add New Page</h2>
-    <?= $msg ?>
-
-    <form method="POST" class="row g-3">
-        <div class="col-md-6">
-            <label class="form-label">Slug</label>
-            <input name="slug" class="form-control" required>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Title</label>
-            <input name="title" class="form-control" required>
-        </div>
-        <div class="col-12">
-            <label class="form-label">Content</label>
-            <textarea name="content" class="form-control" rows="3" required></textarea>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Image URL</label>
-            <input name="image" class="form-control">
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Badge Text</label>
-            <input name="badge_text" class="form-control">
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Highlight Years</label>
-            <input name="highlight_years" class="form-control">
-        </div>
-        <div class="col-12">
-            <label class="form-label">Description</label>
-            <textarea name="description" class="form-control" rows="2"></textarea>
-        </div>
-
-        <h5 class="mt-4">Feature 1</h5>
-        <div class="col-md-4">
-            <label class="form-label">Icon</label>
-            <input name="feature1_icon" class="form-control">
-        </div>
-        <div class="col-md-4">
-            <label class="form-label">Title</label>
-            <input name="feature1_title" class="form-control">
-        </div>
-        <div class="col-md-4">
-            <label class="form-label">Description</label>
-            <textarea name="feature1_desc" class="form-control" rows="2"></textarea>
-        </div>
-
-        <h5 class="mt-4">Feature 2</h5>
-        <div class="col-md-4">
-            <label class="form-label">Icon</label>
-            <input name="feature2_icon" class="form-control">
-        </div>
-        <div class="col-md-4">
-            <label class="form-label">Title</label>
-            <input name="feature2_title" class="form-control">
-        </div>
-        <div class="col-md-4">
-            <label class="form-label">Description</label>
-            <textarea name="feature2_desc" class="form-control" rows="2"></textarea>
-        </div>
-
-        <div class="col-12 mt-4">
-            <button type="submit" class="btn btn-primary">Add Page</button>
-        </div>
-    </form>
-</div>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> -->
+</html>

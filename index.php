@@ -31,7 +31,7 @@ $page_data = mysqli_fetch_array($select_data);
     <div class='d-inline-flex'>
       <p class='m-0 text-white'><a class='text-white' href='home.php'>Home</a></p>
       <p class='m-0 text-white px-2'>/</p>
-      <p class='m-0 text-white'><?php echo $page_data['title']; ?></p>
+      <p class='m-0 text-white text-capitalize'><?php echo $page_data['title']; ?></p>
     </div>
 
 
@@ -42,6 +42,8 @@ $page_data = mysqli_fetch_array($select_data);
   include 'about.php';
 } elseif ($page == 'contact') {
   include 'contact.php';
+} elseif ($page == 'home') {
+  include 'home.php';
 ?>
 
 
