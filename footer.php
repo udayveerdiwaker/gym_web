@@ -61,7 +61,7 @@ include 'config.php';
 
     .gym-footer .nav-link:hover {
         color: var(--gym-secondary);
-        transform: translateX(5px);
+        transform: translateX(3px);
     }
 
     .gym-footer .nav-link::before {
@@ -74,7 +74,7 @@ include 'config.php';
 
     .gym-footer .nav-link:hover::before {
         opacity: 1;
-        left: -10px;
+        left: -20px;
     }
 
     .gym-footer .social-icons {
