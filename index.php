@@ -54,4 +54,5 @@ $page_data = mysqli_fetch_array($select_data);
 <?php
 }
 ?>
+
 <?php include 'footer.php'; ?>

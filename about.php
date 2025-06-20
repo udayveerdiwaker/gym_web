@@ -14,6 +14,11 @@ $data = mysqli_fetch_assoc($select_about);
     <div class="gym-section-title">
         <p class="gym-underline"><?php echo htmlspecialchars($page_data['title']); ?> Page</p>
     </div>
+    <!-- Floating Icons -->
+    <i class="fas fa-dumbbell floating-icon" style="font-size: 10rem; top: 5%; left: 3%;"></i>
+    <i class="fas fa-running floating-icon floating-delay-1" style="font-size: 8rem; bottom: 10%; right: 5%;"></i>
+    <i class="fas fa-weight-hanging floating-icon floating-delay-2" style="font-size: 9rem; top: 55%; left: 10%;"></i>
+    <i class="fas fa-heartbeat floating-icon floating-delay-3" style="font-size: 7rem; top: 25%; right: 15%;"></i>
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="display-4 fw-bold text-gradient">MORE THAN JUST A GYM</h2>

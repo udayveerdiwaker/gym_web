@@ -21,7 +21,7 @@ $page_name = mysqli_fetch_all($check, MYSQLI_ASSOC);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script> -->
 
     <link rel="stylesheet" href="index.css">
-    <title>Fitness Gym</title>
+    <title>Elite Fitness</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@ $page_name = mysqli_fetch_all($check, MYSQLI_ASSOC);
         <nav class="navbar fixed-top navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand fs-1 fw-bold text-wrap" href="home.php">
-                    GYM FITNESS
+                    ELITE FITNESS
                 </a>
                 <button class="navbar-toggler text-danger bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

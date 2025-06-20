@@ -156,6 +156,48 @@ include 'config.php';
     .gym-dumbbell-icon {
         margin-right: 8px;
     }
+
+    /* Newsletter Specific Styles */
+    .subscribe-btn {
+        background-color: var(--gym-orange);
+        color: white;
+        border: none;
+        padding: 0 15px;
+        transition: all 0.3s ease;
+    }
+
+    .subscribe-btn:hover {
+        background-color: var(--gym-accent);
+        transform: translateX(3px);
+    }
+
+    .newsletter-icon {
+        color: var(--gym-orange);
+        margin-right: 10px;
+    }
+
+    /* Modal Styles */
+    .newsletter-modal .modal-content {
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(12px);
+        border-radius: 16px;
+        border-top: 4px solid var(--gym-orange);
+        color: var(--text-white);
+    }
+
+    .newsletter-modal .modal-header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .newsletter-success-icon {
+        font-size: 3rem;
+        color: var(--gym-orange);
+        margin-bottom: 1rem;
+    }
+
+    .newsletter-input {
+        border-radius: 8px 0 0 8px !important;
+    }
 </style>
 
 <footer class="gym-footer">
@@ -236,12 +278,27 @@ include 'config.php';
             <div class="col-md-3 mb-4">
                 <h5><i class="fas fa-dumbbell gym-dumbbell-icon"></i> Newsletter</h5>
                 <p>Subscribe for fitness tips, class updates, and exclusive offers!</p>
-                <form action="" method="POST" class="mt-4">
+                <!-- <form action="" method="POST" class="mt-4">
                     <div class="input-group">
                         <input type="email" class="form-control" placeholder="Your email" name="email" required>
                         <button class="btn subscribe-btn" type="submit">
                             <i class="fas fa-paper-plane"></i>
                         </button>
+                    </div>
+                </form> -->
+                <form id="newsletterForm" action="" method="POST" class="mt-4 needs-validation" novalidate>
+                    <div class="input-group">
+                        <input type="email" class="form-control newsletter-input"
+                            placeholder="Your email"
+                            name="email"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            required>
+                        <button class="btn subscribe-btn" type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        <div class="invalid-feedback">
+                            Please enter a valid email address
+                        </div>
                     </div>
                 </form>
                 <?php
@@ -261,6 +318,60 @@ include 'config.php';
                 ?>
             </div>
         </div>
+
+        <!-- Newsletter Thank You Modal -->
+        <div class="modal fade newsletter-modal" id="newsletterModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center p-5">
+                        <div class="newsletter-success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">You're Subscribed!</h4>
+                        <p class="mb-4">Thank you for joining the Elite Fitness community. Look out for exclusive content in your inbox.</p>
+                        <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">
+                            Let's Get Fit! <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const newsletterForm = document.getElementById('newsletterForm');
+                const newsletterModal = new bootstrap.Modal(document.getElementById('newsletterModal'));
+
+                // Client-side validation
+                newsletterForm.addEventListener('submit', function(e) {
+                    if (!newsletterForm.checkValidity()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    } else {
+                        e.preventDefault();
+
+                        // In a real implementation, you would have AJAX submission here
+                        // For demo, we'll simulate success after 1 second
+                        setTimeout(() => {
+                            newsletterForm.reset();
+                            newsletterForm.classList.remove('was-validated');
+                            newsletterModal.show();
+                        }, 1000);
+                    }
+
+                    newsletterForm.classList.add('was-validated');
+                });
+
+                // PHP integration (uncomment if using PHP form processing)
+                <?php if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'])): ?>
+                    <?php
+                    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+                    if ($email): ?>
+                        newsletterModal.show();
+                    <?php endif; ?>
+                <?php endif; ?>
+            });
+        </script>
 
         <!-- Copyright -->
         <div class="text-center copyright">
