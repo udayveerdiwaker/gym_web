@@ -1,20 +1,20 @@
 CREATE TABLE
   `contact`
 (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
+`id`. INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR
-(100) NOT NULL,
+'100' NOT NULL,
     `contact` VARCHAR
-(20),
+'20',
     `email` VARCHAR
-(100),
+'100',
     `subject` VARCHAR
-(150),
+'150',
     `message` TEXT,
     `membership_type` VARCHAR
-(50),
+'50',
     `preferred_time` VARCHAR
-(50),
+'50',
     `submission_date` DATETIME DEFAULT CURRENT_TIMESTAMP
     
   );

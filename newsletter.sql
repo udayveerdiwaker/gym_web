@@ -1,0 +1,9 @@
+CREATE TABLE `newsletter`
+(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR
+(255) NOT NULL UNIQUE,
+  `subscribed_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY
+(`id`)
+);

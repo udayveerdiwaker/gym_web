@@ -195,6 +195,7 @@ if (isset($_POST['submit'])) {
     h5,
     h6 {
         font-weight: 700;
+        color: var(--text-white);
     }
 
     .opening-hours li {
@@ -364,7 +365,7 @@ if (isset($_POST['submit'])) {
                 <div class="gym-card p-4 p-lg-5 h-100">
                     <h3 class="h3 fw-bold mb-4 pb-2 border-bottom border-secondary">Our Location</h3>
                     <div class="map-container mb-4 ratio ratio-16x9">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d756.262337843902!2d78.27726946955646!3d30.092403158779344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39093e09c40d8083%3A0x49bf374532e85cc6!2sstore%20India!5e1!3m2!1sen!2sin!4v1736334680519!5m2!1sen!2sin"
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3209.340720323525!2d78.27535507525192!3d30.092354274899545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39093f3354762571%3A0x529be26f1d6d1438!2sWebsite%20Banaye%20%26%20Computer%20Sikhe!5e1!3m2!1sen!2sin!4v1750484288258!5m2!1sen!2sin"
                             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
